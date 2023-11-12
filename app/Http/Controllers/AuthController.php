@@ -64,7 +64,7 @@ class AuthController extends Controller
         if (Auth::attempt($data)) {
             $userId = Auth::id();
             session(['user_id' => $userId]);
-            return redirect('/components/home');
+            return redirect('/');
         } else {
             session()->flash('error', 'Username atau Password anda salah!');
             return redirect('/login');
@@ -74,5 +74,10 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+    public function getAllUsers()
+    {
+      $users       = (new User())->all();
+      return response()->json($users, 200);
     }
 }

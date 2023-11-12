@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Http;
 class MakananController extends Controller
 {
     public function tambah()
-    {        
+    {
         $id_userr = Auth::id();
         $id_tokoo = Toko::where('id_user', '=', $id_userr)->get();
 
@@ -81,7 +81,6 @@ class MakananController extends Controller
         if ($toko) {
             $menu = Menu::where('id_toko', $toko->id)->get();
         }
-
         return view('penjual.crud.makanann.editData', [
             'makanans' => Makanan::all()->where('id', $id)->first(),
             'menus' => $menu,

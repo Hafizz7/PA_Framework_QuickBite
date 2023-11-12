@@ -12,9 +12,10 @@ class ApiController extends Controller
     {
         $response = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
         $provinces = $response->json();
-        
+
         return view('penjual.crud.makanann.addData', [
             'provinces' => $provinces,
         ]);
     }
+    
 }

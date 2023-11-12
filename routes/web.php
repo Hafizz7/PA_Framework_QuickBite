@@ -7,6 +7,7 @@ use App\Models\Penjual;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\daftarmenuController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\MakananController;
@@ -23,7 +24,7 @@ use App\Http\Controllers\MakananController;
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('daftarmenu');
 // });
 
 Route::get('/', function () {
@@ -55,9 +56,11 @@ Route::get('/logout', [
 ])->name('logout');
 
 //controller Menu
-Route::controller(TokoController::class)->group(function () {
-    Route::get('toko/penjual/makanan/tambah', 'tambah')->name('penjual.addToko');
-    Route::post('toko/penjual/tambah/action', 'push')->name('penjual.push');
+
+
+
+Route::controller(daftarmenuController::class)->group(function () {
+    Route::get('daftarmenu/getData/{id}', 'getData')->name('getToko');
 });
 
 Route::controller(MakananController::class)->group(function () {
@@ -83,8 +86,12 @@ Route::controller(ApiController::class)->group(function () {
     Route::get('penjual/crud/makanan/addData', 'getMakanan');
 });
 
-
 Route::middleware('auth')->group(function () {
+    Route::controller(TokoController::class)->group(function () {
+        Route::get('toko/penjual/makanan/tambah', 'tambah')->name('penjual.addToko');
+        Route::post('toko/penjual/tambah/action', 'push')->name('penjual.push');
+    });
+
     Route::get('/penjual/toko', function () {
         return view('penjual.toko');
     })->name('penjual.toko');

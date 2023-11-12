@@ -50,8 +50,8 @@
             <p class="text-left mb-1 mx-8">Masuk Sebagai</p>
             <div>
                 <select name="role">
-                    <option value="admin">Penjual</option>
-                    <option value="user">Pengguna</option>
+                    <option value="penjual">Penjual</option>
+                    <option value="pembeli">Pengguna</option>
                 </select>
             </div>
                 <button type="submit" class="w-[231px] h-[46px] bg-indigo-400 rounded-[11px] shadow border border-black flex items-center justify-center mx-auto">
