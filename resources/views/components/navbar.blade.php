@@ -10,8 +10,7 @@
         </ul>
     </div>
     <div class="w-1/5 flex text-center justify-center">
-        <a href="{{route('logout')}}"><div>h1</div></a>
-        <div>h1</div>
+        <a href="{{route('login')}}" class=" hover:text-xl"><div>Login</div></a>
     </div>
 
 </div>

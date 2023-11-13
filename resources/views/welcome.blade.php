@@ -38,8 +38,8 @@
     </div>
 </div>
 
-<div class="h-auto w-screen bg-blue-200 flex items-center justify-center flex-wrap">
-    <div class=" w-full mx-16 my-2 flex flex-wrap gap-10 bg-blue-200">
+<div class="h-auto w-screen flex items-center justify-center flex-wrap">
+    <div class=" w-full mx-16 my-2 flex flex-wrap gap-10 ">
         <div class="w-[275px] h-[290px]">
             <div class="w-full h-full rounded-[20px] border border-black">
                 <div class="w-[262px] h-44 rounded-[20px] border border-black ml-1 mt-1">

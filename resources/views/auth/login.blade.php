@@ -3,12 +3,11 @@
     Login
 @endsection
 @section('content')
-<div class="h-screen bg-[#8194EB] w-screen flex">
-    <div class="w-[770px] h-[596px] bg-sky-100 rounded-[30px] ml-16  my-6 flex items-center justify-center">
-        <img src="{{ asset('assets/images/login.png') }}" class="">
-    </div>
-    <div class="w-[450px] h-[596px] bg-sky-100 rounded-[30px] mx-2 my-6 flex items-center justify-center">
-        <form action="{{route('login.action')}}" method="post" class="w-full flex flex-col items-start">
+<div class="bg-[#E2FFC3] min-h-screen flex items-center">
+    <div class="w-full">
+      <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-2/5">
+        <p class="text-center font-bold text-2xl uppercase mb-10">Login</p>
+        <form action="{{route('login.action')}}" method="post" enctype="multipart/form-data" class="w-full flex flex-col items-start">
             @csrf
             @if (session('error'))
                 <div class="w-full relative mb-6">
@@ -19,22 +18,31 @@
                     </div>
                 </div>
             @endif
-            <p class="text-black text-[25px] font-bold font-['Kantumruy'] mx-auto">LOGIN</p>
-            <p class="text-left mb-1 mx-8">Username</p>
-            <div>
-                <input type="username" name="username" placeholder="Username" class="w-[381px] h-[46px] bg-indigo-50 rounded-[11px] shadow border border-black mx-8 mb-4">
-            </div>
-            <p class="text-left mb-1 mx-8">Username</p>
-            <div>
-                <input type="password" name="password" placeholder="Password" class="w-[381px] h-[46px] bg-indigo-50 rounded-[11px] shadow border border-black mx-8 mb-4">
-            </div>
-                <button type="submit" class="w-[231px] h-[46px] bg-indigo-400 rounded-[11px] shadow border border-black flex items-center justify-center mx-auto">
-                    <p class="w-[68px] h-[33px] text-black text-xl font-bold font-['Kantumruy']">LOGIN</p>
-                </button>
-            <div class="ml-8 my-4">
-                <span class="text-black text-lg font-normal">Belum punya akun? </span>
-                <span class="text-black text-lg font-bold hover:text-blue-800"><a href="{{route('register')}}">Sign in disini!</a></span>
-            </div>
-        </from>
+          <div class="mb-5 w-full">
+            <label for="name" class="block mb-2 font-bold text-gray-600">Username</label>
+            <input type="text" name="username" placeholder="Username" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
+
+          <div class="mb-5 w-full">
+            <label for="password" class="block mb-2 font-bold text-gray-600">Password</label>
+            <input type="password" name="password" placeholder="Password" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
+
+          <div class="mb-5 w-full">
+            <label for="password" class="block mb-2 font-bold text-gray-600"> Role </label>
+            <select name="role" class="mb-5 border border-gray-300 shadow p-3 w-full rounded mb-">
+                <option value="penjual">Penjual</option>
+                <option value="pembeli">Pengguna</option>
+            </select>
+          </div>
+          
+          <button class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
+          <div class="ml-1 my-4">
+            <span class="text-black text-lg font-normal">Belum punya akun? </span>
+            <span class="text-black text-lg font-bold hover:text-blue-800"><a href="{{route('register')}}">Sign in disini!</a></span>
+        </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

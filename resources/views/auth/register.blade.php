@@ -4,14 +4,13 @@
 @endsection
 
 @section('content')
-<div class="h-screen bg-[#8194EB] w-screen flex">
-    <div class="w-[770px] h-[596px] bg-sky-100 rounded-[30px] ml-16  my-6 flex items-center justify-center">
-        <img src="{{ asset('assets/images/regis.png') }}" class="">
-    </div>
-    <div class="w-[450px] h-[596px] bg-sky-100 rounded-[30px] mx-2 my-6 flex items-center justify-center">
+<div class="bg-[#E2FFC3] min-h-screen flex items-center">
+    <div class="w-full">
+      <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-2/5">
+        <p class="text-center font-bold text-2xl uppercase mb-10">Register</p>
         <form action="{{route('register.action')}}" method="post" class="w-full flex flex-col items-start">
-        @csrf
-                @if(session('error'))
+            @csrf
+            @if(session('error'))
                     <div class="w-full relative mb-6">
                         <div class="p-2 rounded-sm bg-red-100 ring-1 ring-red-500">
                             <p class="text-red-500">
@@ -29,39 +28,43 @@
                         </div>
                     </div>
                 @endif
+          <div class="mb-5 w-full">
+            <label for="name" class="block mb-2 font-bold text-gray-600">Username</label>
+            <input type="text" name="username" placeholder="Username" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
 
-            <p class="text-black text-[25px] font-bold font-['Kantumruy'] mx-auto">REGISTRASI</p>
-            <p class="text-left mb-1 mx-8">Username</p>
-            <div>
-                <input type="username" name="username" placeholder="Username" class="w-[381px] h-[46px] bg-indigo-50 rounded-[11px] shadow border border-black mx-8 mb-4">
-            </div>
-            <p class="text-left mb-1 mx-8">Email</p>
-            <div>
-                <input type="Email" name="email" placeholder="Email" class="w-[381px] h-[46px] bg-indigo-50 rounded-[11px] shadow border border-black mx-8 mb-4">
-            </div>
-            <p class="text-left mb-1 mx-8">Password</p>
-            <div>
-                <input type="password" name="password" placeholder="Password" class="w-[381px] h-[46px] bg-indigo-50 rounded-[11px] shadow border border-black mx-8 mb-4">
-            </div>
-            <p class="text-left mb-1 mx-8">Confirm Password</p>
-            <div>
-                <input type="password" name="confirm_password" placeholder="Password" class="w-[381px] h-[46px] bg-indigo-50 rounded-[11px] shadow border border-black mx-8 mb-4">
-            </div>
-            <p class="text-left mb-1 mx-8">Masuk Sebagai</p>
-            <div>
-                <select name="role">
-                    <option value="penjual">Penjual</option>
-                    <option value="pembeli">Pengguna</option>
-                </select>
-            </div>
-                <button type="submit" class="w-[231px] h-[46px] bg-indigo-400 rounded-[11px] shadow border border-black flex items-center justify-center mx-auto">
-                    <p class="text-black text-xl font-bold font-['Kantumruy']">REGISTER</p>
-                </button>
-            <div class="ml-8 my-4">
-                <span class="text-black text-lg font-normal">Sudah punya akun? </span>
-                <span class="text-black text-lg font-bold hover:text-blue-800"><a href="{{route('login')}}">Login disini!</a></span>
-            </div>
+          <div class="mb-5 w-full">
+            <label for="name" class="block mb-2 font-bold text-gray-600">Email</label>
+            <input type="email" name="email" placeholder="Email" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
+
+          <div class="mb-5 w-full">
+            <label for="password" class="block mb-2 font-bold text-gray-600">Password</label>
+            <input type="password" name="password" placeholder="Password" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
+
+          <div class="mb-5 w-full">
+            <label for="password" class="block mb-2 font-bold text-gray-600">Confirm Password</label>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
+
+          <div class="mb-5 w-full">
+            <label for="password" class="block mb-2 font-bold text-gray-600"> Role </label>
+            <select name="role" class="mb-5 border border-gray-300 shadow p-3 w-full rounded mb-">
+                <option value="penjual">Penjual</option>
+                <option value="pembeli">Pengguna</option>
+            </select>
+          </div>
+
+          <button class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
+          <div class="ml-1 my-4">
+
+            <span class="text-black text-lg font-normal">Sudah punya akun? </span>
+            <span class="text-black text-lg font-bold hover:text-blue-800"><a href="{{route('login')}}">Login disini!</a></span>
+        </div>
         </form>
+      </div>
     </div>
+  </div>
 </div>
 @endsection

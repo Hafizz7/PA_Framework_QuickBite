@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -42,7 +41,6 @@ class User extends Authenticatable
         if ($this->role == $role) {
             return true;
         }
-
         return false;
     }
 }
