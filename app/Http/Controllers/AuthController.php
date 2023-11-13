@@ -14,22 +14,19 @@ class AuthController extends Controller
         if (empty($request->username)) {
             session()->flash('error', 'Field "Username" harus diisi.');
             return redirect('/register')
-            ->withInput();
-        }
-        else if(empty($request->email)){
+                ->withInput();
+        } else if (empty($request->email)) {
             session()->flash('error', 'Field "Email" harus diisi.');
             return redirect('/register')
-            ->withInput();
-        }
-        else if(empty($request->password)){
+                ->withInput();
+        } else if (empty($request->password)) {
             session()->flash('error', 'Field "Password" harus diisi.');
             return redirect('/register')
-            ->withInput();
-        }
-        else if(empty($request->role)){
+                ->withInput();
+        } else if (empty($request->role)) {
             session()->flash('error', 'Field "Password" harus diisi.');
             return redirect('/register')
-            ->withInput();
+                ->withInput();
         }
 
         if ($request->password == $request->confirm_password) {
@@ -47,37 +44,47 @@ class AuthController extends Controller
 
             session()->flash('success', 'Akun berhasil dibuat!');
             return redirect('/register');
-        }
-        else {
+        } else {
             session()->flash('error', 'Konfirmasi password anda salah!');
             return redirect('/register')
-            ->withInput();
+                ->withInput();
         }
-
     }
     public function loginAction(Request $request)
     {
+
+        $username = $request->username;
+        $password = $request->password;
         $data = [
             'username' => $request->username,
             'password' => $request->password,
         ];
+        $user = User::where('username', $username)->first();
+
         if (Auth::attempt($data)) {
-            $userId = Auth::id();
-            session(['user_id' => $userId]);
-            return redirect('/');
+            // Login berhasil, cek peran pengguna
+            if ($user->role === 'penjual') {
+                $userId = Auth::id();
+                session(['user_id' => $userId]);
+                // Jika peran adalah penjual, arahkan ke halaman dashboard penjual
+                return redirect(route('penjual.dashboard'));
+                // return redirect('');
+            } else {
+                $userId = Auth::id();
+                session(['user_id' => $userId]);
+                // Jika peran adalah pengguna biasa, arahkan ke halaman utama
+                return redirect('/');
+            }
         } else {
+            // Jika login gagal, tampilkan pesan kesalahan
             session()->flash('error', 'Username atau Password anda salah!');
             return redirect('/login');
         }
     }
+
     public function logout()
     {
         Auth::logout();
         return redirect('/');
-    }
-    public function getAllUsers()
-    {
-      $users       = (new User())->all();
-      return response()->json($users, 200);
     }
 }

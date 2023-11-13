@@ -12,5 +12,8 @@
     <div class="w-1/5 flex text-center justify-center">
         <a href="{{route('login')}}" class=" hover:text-xl"><div>Login</div></a>
     </div>
+    <div class="w-1/5 flex text-center justify-center">
+        <a href="{{route('logout')}}" class=" hover:text-xl"><div>Logout</div></a>
+    </div>
 
 </div>

@@ -14,7 +14,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $fillable = ['username','email','role','password'];
+    protected $fillable = ['username', 'email', 'role', 'password'];
     protected $hidden = [
         'password',
         'remember_token',
@@ -37,10 +37,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Toko::class, 'id_user')->where('role', 'pembeli');
     }
-    public function hasRole($role){
-        if ($this->role == $role) {
-            return true;
-        }
-        return false;
+    public function hasRole($role)
+    {
+        return $this->role == $role;
     }
 }
