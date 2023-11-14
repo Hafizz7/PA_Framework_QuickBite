@@ -56,11 +56,11 @@
                 <div class="w-[275px] h-[290px]">
                     <div class="w-full h-full rounded-[20px] border border-black">
                         <div class="w-[262px] h-44 rounded-[20px] border border-black ml-1 mt-1">
-                            <img src="{{ asset('images/' . $tkh->gambar) }}" class="w-[262px] h-44 rounded-[20px]">
+                            <img src="{{ asset('images/toko/' . $tkh->gambar) }}" class="w-[262px] h-44 rounded-[20px]">
                         </div>
                         <div class="text-black text-[22px] font-normal font-['Inter'] ml-1">{{$tkh->nama_toko}}</div>
-                        <div class="text-black text-xs font-light font-['Inter'] ml-1">Menjual beraneka macam ragam hayati</div>
-                        <div class="text-black text-lg font-normal font-['Inter'] ml-1">Samarinda</div>
+                        <div class="text-black text-xs font-light font-['Inter'] ml-1">{{$tkh->deskripsi_toko}}</div>
+                        <div class="text-black text-lg font-normal font-['Inter'] ml-1">{{$tkh->alamat}}</div>
                     </div>
                 </div>
             </a>

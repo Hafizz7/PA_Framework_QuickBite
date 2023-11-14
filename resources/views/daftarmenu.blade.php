@@ -10,7 +10,7 @@
     <div class="bg-[rgb(211,242,178)] w-8/12 h-3/5 mt-36 flex flex-col justify-center items-center rounded-xl">
         <div class="bg-slate-900 static justify-center flex">
             <div class=" top-[90px] absolute z-0">
-                <img class="w-[252px] h-[252px] rounded-full shadow-lg" src="{{ asset('images/' . $tkh->gambar) }}" />
+                <img class="w-[252px] h-[252px] rounded-full shadow-lg" src="{{ asset('images/toko/' . $tkh->gambar) }}" />
             </div>
         </div>
         <div class=" mt-28">
@@ -18,10 +18,10 @@
             <h1 class="text-black text-3xl font-semibold font-['Inter']">{{$tkh->nama_toko}}</h1>
         </div>
         <div>
-            <h1 class="text-black text-lg font-light font-['Inter']">Menjual beraneka macam ragam hayati</h1>
+            <h1 class="text-black text-lg font-light font-['Inter']">{{$tkh->deskripsi_toko}}</h1>
         </div>
         <div>
-            <h1 class="text-black text-lg font-light font-['Inter']">Jl. Pasundan No. 08, Samarinda Kota, Samarinda</h1>
+            <h1 class="text-black text-lg font-light font-['Inter']">{{$tkh->alamat}}</h1>
         </div>
     </div>
 
