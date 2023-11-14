@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->string('nama_menu');
-            $table->foreignId('id_toko')->constrained('tokos');
+            $table->foreignId('id_toko')->constrained('tokos')->onDelete('cascade');
             $table->timestamps();
         });
     }

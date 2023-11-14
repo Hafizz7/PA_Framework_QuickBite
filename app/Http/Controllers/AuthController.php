@@ -31,8 +31,13 @@ class AuthController extends Controller
 
         if ($request->password == $request->confirm_password) {
             $usernameExist = User::where("username", $request->username)->first();
+            $emailExist = User::where("email", $request->email)->first();
             if ($usernameExist) {
                 session()->flash('error', 'Username sudah digunakan!');
+                return redirect('/register');
+            }
+            if($emailExist){
+                session()->flash('error', 'Email sudah digunakan!');
                 return redirect('/register');
             }
             User::create([
@@ -54,7 +59,7 @@ class AuthController extends Controller
     {
 
         $username = $request->username;
-        $password = $request->password;
+        
         $data = [
             'username' => $request->username,
             'password' => $request->password,
@@ -62,17 +67,13 @@ class AuthController extends Controller
         $user = User::where('username', $username)->first();
 
         if (Auth::attempt($data)) {
-            // Login berhasil, cek peran pengguna
             if ($user->role === 'penjual') {
                 $userId = Auth::id();
                 session(['user_id' => $userId]);
-                // Jika peran adalah penjual, arahkan ke halaman dashboard penjual
                 return redirect(route('penjual.dashboard'));
-                // return redirect('');
             } else {
                 $userId = Auth::id();
                 session(['user_id' => $userId]);
-                // Jika peran adalah pengguna biasa, arahkan ke halaman utama
                 return redirect('/');
             }
         } else {

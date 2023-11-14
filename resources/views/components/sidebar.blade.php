@@ -1,8 +1,4 @@
-    <style>
-        .font-family-karla {
-            font-family: karla;
-        }
-    </style>
+
     <aside class="fixed bg-[#3d68ff] h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
             <a href="" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
@@ -17,7 +13,7 @@
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 DashboardT
             </a>
-            <a href="{{route('penjual.toko')}}"
+            <a href="{{route('penjual.TokoTertentu')}}"
                 class="flex items-center text-white hover:opacity-100 py-4 pl-6 hover:bg-[#1947ee]">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Toko
@@ -37,9 +33,8 @@
                 Pesanan
             </a>
         </nav>
-        <a href="#"
+        <a href="{{route('logout')}}"
             class="absolute w-full bg-[#1947ee] hover:bg-[#0038fd] bottom-0 active-nav-link text-white flex items-center justify-center py-4">
-            <i class="fas fa-arrow-circle-up mr-3"></i>
-            Upgrade to Pro!
+            <i class="fas fa-arrow-circle-up mr-3"></i>Logout
         </a>
     </aside>

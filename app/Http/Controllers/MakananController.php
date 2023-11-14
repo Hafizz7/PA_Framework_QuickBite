@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
 use App\Models\Menu;
 use App\Models\Toko;
 use App\Models\Makanan;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use PhpParser\Node\Stmt\Return_;
 
 class MakananController extends Controller
 {
@@ -73,7 +75,7 @@ class MakananController extends Controller
     public function edit($id)
     {
         $id_userr = Auth::id();
-        $id_tokoo = Toko::where('id_user', '=', $id_userr)->get();
+        // $id_tokoo = Toko::where('id_user', '=', $id_userr)->get();
 
         $id_user = auth()->id();
         $toko = Toko::where('id_user', $id_user)->first();
@@ -126,6 +128,19 @@ class MakananController extends Controller
     public function delete($id)
     {
         $makanas = Makanan::findOrFail($id);
+        // public\images\makanan\1699880689164-Makanbang.png
+        $file = public_path('images/makanan/').$makanas->gambar;
+        $file = str_replace('\\', '/', $file);
+
+        if(file_exists($file)){
+            unlink($file);
+        }
+        else{
+            unlink($file);
+            dd($file);
+        }
+        //
+
         $makanas->delete();
         return redirect()->route('penjual.makanan')->with('success', 'Data Makanan
         Berhasil Dihapus');

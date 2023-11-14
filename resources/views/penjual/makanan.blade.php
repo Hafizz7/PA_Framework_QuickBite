@@ -10,6 +10,7 @@ Menu
             <div class="m-4 p-8 relative bg-slate-100 rounded-lg drop-shadow-md">
                 <p class="text-4xl font-bold mb-4">Data Makanan</p>
                 <hr>
+                
                 <div class="w-full h-auto flex justify-end mt-2">
                     <a href="{{route('penjual.addMakanan')}}">
                         <button class="px-4 py-2 bg-green-600 rounded-md text text-white">Tambah</button>

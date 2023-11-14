@@ -11,7 +11,7 @@ class Toko extends Model
 {
     use HasFactory;
     protected $table = 'tokos';
-    protected $fillable = ['nama_toko','deskripsi_toko','gambar', 'id_user'];
+    protected $fillable = ['nama_toko','deskripsi_toko','gambar','alamat', 'id_user'];
 
     public function menu(): BelongsToMany
     {

@@ -36,8 +36,7 @@
         <div class="w-[275px] h-[334px]">
             <div class="w-full h-full rounded-xl border-2 border-[#84B74E]">
                 <div class="w-[262px] h-44 rounded-xl ml-1 mt-1">
-                    <img src="{{ asset('assets/images/Makanbang.png') }}" class="w-[262px] h-44 rounded-xl"
-                        alt="">
+                    <img src="{{ asset('images/makanan/'.$mkn->gambar) }}" class="w-[260px] h-44 rounded-xl"alt="">
                 </div>
                 <div class="text-black text-[22px] font-normal font-['Inter'] ml-1 h-16 items-center flex">{{$mkn->nama}}</div>
                 <div class="text-black text-sm font-light font-['Inter'] ml-1">Menjual beraneka macam<br> ragam hayati</div>

@@ -10,6 +10,13 @@ Menu
             <div class="m-4 p-8 bg-white rounded-lg drop-shadow-md">
                 <p class="text-4xl font-bold mb-4">Data Menu</p>
                 <hr><br>
+                {{-- @if ($tokotertentu->isEmpty())
+                <div class="w-full h-auto flex justify-end mt-2">
+                    <a href="{{route('penjual.addToko')}}">
+                        <button class="px-4 py-2 bg-green-600 rounded-md text text-white">Tambah</button>
+                    </a>
+                </div><br>
+            @endif --}}
                 <a href="{{route('penjual.addMenuu')}}">
                 <div class="w-full h-auto flex justify-end">
                     <button class="px-4 py-2 bg-green-600 rounded-md text text-white">Tambah</button>
