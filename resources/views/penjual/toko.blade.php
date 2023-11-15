@@ -23,7 +23,7 @@ Toko
                 <a href="{{route('penjual.addToko')}}">
                     <button class="px-4 py-2 bg-green-600 rounded-md text text-white">Tambah</button>
                 </a>
-            </div><br> --}}\
+            </div><br> --}}
             <div class="flex flex-col w-full justify-center items-center">
                 <div class="w-[200px] h-[200px] bg-white rounded-full drop-shadow-md">
                     <img src="{{asset('images/toko/'. $tkh->gambar)}}" alt="" class="rounded-full drop-shadow-md w-[200px] h-[200px]">
@@ -31,7 +31,7 @@ Toko
             </div>
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 w-screen">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 Nama Toko
@@ -42,24 +42,25 @@ Toko
                             <th scope="col" class="px-6 py-3">
                                 Alamat
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                Action
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                             <tr class="bg-white border-b">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                     {{$tkh->nama_toko}}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{$tkh->deskripsi_toko}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{$tkh->gambar}}
+                                    {{$tkh->alamat}}
                                 </td>
-                                <td class="px-6 py-4">
-                                    {{-- {{$tkh->menu->nama_menu}} --}}
-                                </td>
+
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="w-full h-auto flex flex-row">
+                                    <div class="h-auto flex flex-row">
                                         <a href="{{route('penjual.edittoko',$tkh->id)}}">
                                             <button class="px-4 py-2 mr-1 bg-yellow-300 rounded-md text">Edit</button>
                                         </a>

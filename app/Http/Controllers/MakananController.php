@@ -38,9 +38,9 @@ class MakananController extends Controller
     {
 
         $request->validate([
-            'nama' => 'required|string|max:20',
+            'nama' => 'required|string|max:30',
             'harga' => 'required|string',
-            'stock' => 'required|string',
+            'deskripsi' => 'required|string',
             'id_menu' => 'required',
             'id_toko' => 'required',
             'gambar' => 'required',
@@ -51,10 +51,9 @@ class MakananController extends Controller
             $request->file('gambar')->move(public_path('images/makanan'), $gambar);
             Makanan::create(
                 [
-                    'data_file' => $gambar,
                     'nama' => $request->nama,
                     'harga' => $request->harga,
-                    'stock' => $request->stock,
+                    'deskripsi' => $request->deskripsi,
                     'id_menu' => $request->id_menu,
                     'id_toko' => $request->id_toko,
                     'gambar' => $gambar,
@@ -91,9 +90,9 @@ class MakananController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required|string|max:20',
+            'nama' => 'required|string|max:30',
             'harga' => 'required|string',
-            'stock' => 'required|string',
+            'deskripsi' => 'required|string',
             'id_menu' => 'required',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
         ]);
@@ -107,20 +106,15 @@ class MakananController extends Controller
             $request->file('gambar')->move(public_path('images/makanan'), $gambar);
 
             $makanan->update([
-                'data_file' => $gambar,
                 'nama' => $request->nama,
                 'harga' => $request->harga,
-                'stock' => $request->stock,
+                'deskripsi' => $request->deskripsi,
                 'id_menu' => $request->id_menu,
                 'gambar' => $gambar,
             ]);
         } else {
-            $makanan->update([
-                'nama' => $request->nama,
-                'harga' => $request->harga,
-                'stock' => $request->stock,
-                'id_menu' => $request->id_menu,
-            ]);
+            echo 'Gagal';
+            return response()->json(['errors' => 'Gagal'], 422);
         }
 
         return redirect()->route('penjual.makanan')->with('success', 'Data Barang Berhasil Diubah');

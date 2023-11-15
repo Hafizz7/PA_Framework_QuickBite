@@ -10,7 +10,7 @@ Menu
             <div class="m-4 p-8 relative bg-slate-100 rounded-lg drop-shadow-md">
                 <p class="text-4xl font-bold mb-4">Data Makanan</p>
                 <hr>
-                
+
                 <div class="w-full h-auto flex justify-end mt-2">
                     <a href="{{route('penjual.addMakanan')}}">
                         <button class="px-4 py-2 bg-green-600 rounded-md text text-white">Tambah</button>
@@ -30,10 +30,10 @@ Menu
                                     Harga
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Stock
+                                    Nama Menu
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Nama Menu
+                                    Deskripsi
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Gambar
@@ -46,9 +46,9 @@ Menu
                         <tbody>
                             @foreach ($makanan as $index=> $makanans)
                                 <tr class="bg-white border-b">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                         {{$index+1}}
-                                    </th>
+                                    </td>
                                     <td class="px-6 py-4">
                                         {{$makanans->nama}}
                                     </td>
@@ -56,10 +56,10 @@ Menu
                                         {{$makanans->harga}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$makanans->stock}}
+                                        {{$makanans->menu->nama_menu}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$makanans->menu->nama_menu}}
+                                        {{$makanans->deskripsi}}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$makanans->gambar}}

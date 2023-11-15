@@ -12,7 +12,7 @@ class Makanan extends Model
 {
     use HasFactory;
     protected $table = 'makanans';
-    protected $fillable = ['nama','harga','stock','gambar','id_menu', 'id_toko'];
+    protected $fillable = ['nama','harga','stock','gambar','id_menu', 'id_toko', 'deskripsi'];
     public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class,'id_menu');

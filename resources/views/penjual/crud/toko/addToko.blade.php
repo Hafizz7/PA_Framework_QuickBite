@@ -6,12 +6,12 @@
 @section('content')
     <div class="bg-blue-200 min-h-screen flex items-center">
         <div class="w-full">
-            <h2 class="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Tambah Makanan</h2>
             <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
                 <form action="{{ route('penjual.push') }}" method="post" enctype="multipart/form-data"
                     class="w-full flex flex-col items-start">
                     @csrf
-                    <p class="text-black text-[25px] font-bold font-['Kantumruy'] mx-auto">Tambah Data Barang</p>
+                    <p class="text-black text-[25px] font-bold text-2xl mx-auto">Tambah Toko</p>
+                    {{-- untuk menampilkan error jika ada --}}
                     @if ($errors->any())
                         <div class="bg-red-500 text-white p-2 rounded-md">
                             <ul>
@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="mb-5 w-full">
-                        <label for="alamat" class="block mb-2 font-bold text-gray-600">Gambar</label>
+                        <label for="alamat" class="block mb-2 font-bold text-gray-600">Alamat</label>
                         <input type="text" name="alamat" placeholder="Alamat...." required
                             class="border border-gray-300 shadow p-3 w-full rounded mb-">
                     </div>

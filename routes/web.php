@@ -94,73 +94,12 @@ Route::controller(ApiController::class)->group(function () {
     Route::get('penjual/crud/makanan/addData', 'getMakanan');
 });
 
-// Route::middleware('auth')->group(function () {
-//     Route::controller(TokoController::class)->group(function () {
-//         Route::get('toko/penjual/makanan/tambah', 'tambah')->name('penjual.addToko');
-//         Route::post('toko/penjual/tambah/action', 'push')->name('penjual.push');
-//     });
-
-//     Route::get('/penjual/toko', function () {
-//         return view('penjual.toko');
-//     })->name('penjual.toko');
-
-//     Route::get('/penjual/menu', function () {
-//         $id_user = auth()->id();
-//         $toko = Toko::where('id_user', $id_user)->first();
-
-//         if ($toko) {
-//             $id_menuu = Menu::where('id_toko', $toko->id)->get();
-//         } else {
-//             $id_menuu = Menu::all();
-//         }
-
-//         return view('penjual.menu', [
-//             "menu" => $id_menuu,
-//         ]);
-//     })->name('penjual.menu');
-
-//     Route::get('/penjual/makanan', function () {
-//         $id_user = Auth::id();
-//         $toko = Toko::where('id_user', $id_user)->first();
-
-//         if ($toko) {
-//             $makanan = Makanan::where('id_toko', $toko->id)->get();
-//         } else {
-//             $makanan = collect(); // If no toko is found, initialize an empty collection
-//         }
-
-//         return view('penjual.makanan', [
-//             'makanan' => $makanan
-//         ]);
-//     })->name('penjual.makanan');
-
-//     Route::get('/penjual/crud/makanann/addData', function () {
-//         return view('penjual.crud.makanann.addData');
-//     })->name('penjual.addMakananView');
-
-//     Route::get('/penjual/dashboard', function () {
-//         return view('penjual.dashboard');
-//     })->middleware('checkRole:penjual')->name('penjual.dashboard');
-
-//     Route::get('/penjual/crud/menuu/addMenu', function () {
-//         return view('penjual.crud.menuu.addMenu');
-//     })->name('penjual.addMenu');
-// });
-
-
 Route::middleware('auth')->group(function () {
     Route::middleware('checkRole:penjual')->group(function () {
 
         Route::get('toko/penjual/toko', function(){
             $id_user = auth()->id();
-            // return $id_user;
-            // $tokos = Toko::all();
-                $tokos = Toko::all()->where('id_user', $id_user);
-            // if ($tokos) {
-            //     $toko = Toko::all()->where('id_user', $id_user)->first();
-            // } else {
-            //     $toko = collect();
-            // }
+            $tokos = Toko::all()->where('id_user', $id_user);
             return view('penjual.toko', [
                 "tokotertentu" => $tokos,
             ]);
@@ -199,7 +138,7 @@ Route::middleware('auth')->group(function () {
 
             return view('penjual.makanan', [
                 'makanan' => $makanan,
-                
+
             ]);
         })->name('penjual.makanan');
 

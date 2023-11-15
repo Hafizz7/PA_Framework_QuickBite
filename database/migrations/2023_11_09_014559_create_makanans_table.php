@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->integer('harga');
-            $table->integer('stock');
             $table->string('gambar');
+            $table->string('deskripsi');
             $table->foreignId('id_menu')->constrained('menus')->onDelete('cascade');
             $table->foreignId('id_toko')->constrained('tokos');
             $table->timestamps();

@@ -52,7 +52,7 @@
             <label for="password" class="block mb-2 font-bold text-gray-600"> Role </label>
             <select name="role" class="mb-5 border border-gray-300 shadow p-3 w-full rounded mb-">
                 <option value="penjual">Penjual</option>
-                <option value="pembeli">Pengguna</option>
+                <option value="pembeli">Pembeli</option>
             </select>
           </div>
 

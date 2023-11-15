@@ -6,11 +6,10 @@
 @section('content')
 <div class="bg-[#E2FFC3] min-h-screen flex items-center">
     <div class="w-full">
-      <h2 class="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Tambah Makanan</h2>
       <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
         <form action="{{route('penjual.pushMakanan')}}" method="post" enctype="multipart/form-data" class="w-full flex flex-col items-start">
             @csrf
-            <p class="text-black text-[25px] font-bold font-['Kantumruy'] mx-auto">Tambah Data Barang</p>
+            <p class="text-black text-[25px] font-bold text-2xl mx-auto">Tambah Data Makanan</p>
              @if ($errors->any())
                 <div class="bg-red-500 text-white p-2 rounded-md">
                     <ul>
@@ -26,13 +25,13 @@
           </div>
 
           <div class="mb-5 w-full">
-            <label for="twitter" class="block mb-2 font-bold text-gray-600">Harga</label>
+            <label for="Harga" class="block mb-2 font-bold text-gray-600">Harga</label>
             <input type="number" name="harga" placeholder="Harga...." class="border border-gray-300 shadow p-3 w-full rounded mb-">
           </div>
 
           <div class="mb-5 w-full">
-            <label for="twitter" class="block mb-2 font-bold text-gray-600">Stock</label>
-            <input type="number" name="stock" placeholder="Stock..." class="border border-gray-300 shadow p-3 w-full rounded mb-">
+            <label for="deskripsi" class="block mb-2 font-bold text-gray-600">Deskripsi</label>
+            <input type="text" name="deskripsi" placeholder="Deskripsi..." class="border border-gray-300 shadow p-3 w-full rounded mb-">
           </div>
 
           <div class="mb-5 w-full">

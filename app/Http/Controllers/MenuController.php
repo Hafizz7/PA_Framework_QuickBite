@@ -22,7 +22,7 @@ class MenuController extends Controller
     public function pushMenu(Request $request)
     {
         $request->validate([
-            'nama_menu' => 'required|string|max:20',
+            'nama_menu' => 'required|string|max:30',
             'id_toko' => 'required',
         ]);
         Menu::create([
@@ -43,7 +43,7 @@ class MenuController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_menu' => 'required|string|max:20',
+            'nama_menu' => 'required|string|max:30',
         ]);
         $menu = Menu::findOrFail($id);
         $menu->update([

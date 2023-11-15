@@ -30,7 +30,7 @@
     </div>
     <div class="bg-slate-900 static ">
         <div class="left-[790px] top-[90px] absolute z-0">
-            <img class="w-[282px] h-[282px] rounded-full shadow-lg" src="https://via.placeholder.com/322x325" />
+            <img class="w-[282px] h-[282px] rounded-full shadow-lg" src="assets/images/Makann.jpg">
         </div>
 
     </div>
@@ -58,7 +58,7 @@
                         <div class="w-[262px] h-44 rounded-[20px] border border-black ml-1 mt-1">
                             <img src="{{ asset('images/toko/' . $tkh->gambar) }}" class="w-[262px] h-44 rounded-[20px]">
                         </div>
-                        <div class="text-black text-[22px] font-normal font-['Inter'] ml-1">{{$tkh->nama_toko}}</div>
+                        <div class="text-black text-[22px] font-normal font-['Inter'] ml-1 h-16 flex items-center">{{$tkh->nama_toko}}</div>
                         <div class="text-black text-xs font-light font-['Inter'] ml-1">{{$tkh->deskripsi_toko}}</div>
                         <div class="text-black text-lg font-normal font-['Inter'] ml-1">{{$tkh->alamat}}</div>
                     </div>

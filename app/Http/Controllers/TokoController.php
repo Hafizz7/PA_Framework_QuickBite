@@ -42,7 +42,6 @@ class TokoController extends Controller
             $request->file('gambar')->move(public_path('images/toko'), $gambar);
             Toko::create(
                 [
-                    'data_file' => $gambar,
                     'nama_toko' => $request->nama_toko,
                     'deskripsi_toko' => $request->deskripsi_toko,
                     'id_user' => $request->id_user,
@@ -84,12 +83,9 @@ class TokoController extends Controller
 
         if ($request->hasFile('gambar')) {
             $gambar = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('gambar')->getClientOriginalName());
-
-            // Move the file to the specified directory
             $request->file('gambar')->move(public_path('images/toko'), $gambar);
 
             $tokosse->update([
-                'data_file' => $gambar,
                 'nama_toko' => $request->nama_toko,
                 'deskripsi_toko' => $request->deskripsi_toko,
                 'id_user' => $request->id_user,

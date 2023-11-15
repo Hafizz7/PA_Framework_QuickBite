@@ -6,7 +6,7 @@
 <body>
 @include('components.navbar')
 @foreach ($tokosss as $tkh)
-<div class="w-screen flex h-[440px] bg-slate-700 justify-center">
+<div class="w-screen flex h-[440px]  justify-center">
     <div class="bg-[rgb(211,242,178)] w-8/12 h-3/5 mt-36 flex flex-col justify-center items-center rounded-xl">
         <div class="bg-slate-900 static justify-center flex">
             <div class=" top-[90px] absolute z-0">
@@ -29,9 +29,9 @@
 </div>
 @endforeach
 @foreach ($menusss as $mnu)
-<div class="h-auto w-screen bg-blue-200 flex items-center flex-wrap">
-    <h1 class="text-black text-3xl font-medium font-['Inter'] text-left ml-16">{{$mnu->nama_menu}}</h1>
-    <div class=" w-full mx-16 my-2 flex flex-wrap gap-10 bg-blue-200">
+<div class="h-auto w-screen  flex items-center flex-wrap">
+    <h1 class="text-black text-3xl font-medium font-['Inter'] text-left ml-[5%]">{{$mnu->nama_menu}}</h1>
+    <div class=" w-full mx-16 my-2 flex flex-wrap gap-10 bg-[#E6F9D3] rounded-xl">
         @foreach ($makanansss->where('id_menu', $mnu->id) as $mkn)
         <div class="w-[275px] h-[334px]">
             <div class="w-full h-full rounded-xl border-2 border-[#84B74E]">
@@ -39,7 +39,7 @@
                     <img src="{{ asset('images/makanan/'.$mkn->gambar) }}" class="w-[260px] h-44 rounded-xl"alt="">
                 </div>
                 <div class="text-black text-[22px] font-normal font-['Inter'] ml-1 h-16 items-center flex">{{$mkn->nama}}</div>
-                <div class="text-black text-sm font-light font-['Inter'] ml-1">Menjual beraneka macam<br> ragam hayati</div>
+                <div class="text-black text-sm font-light font-['Inter'] ml-1">{{$mkn->deskripsi}}</div>
                 <div class="flex flex-row mt-1">
                     <div class="bg-[#84B74E] mr-3 ml-1 rounded-md w-20 h-8 flex items-center justify-center">
                         <h1 class="text-sm">{{$mkn->harga}}</h1>
