@@ -14,6 +14,14 @@ use PhpParser\Node\Stmt\Return_;
 
 class MakananController extends Controller
 {
+    public function index()
+    {
+        $endpoint = env('BASE_ENV').'/api/api/welcome';
+        $data = Http::get($endpoint);
+        return view('', [
+            'makanannn' => $data
+        ]);
+    }
     public function tambah()
     {
         $id_userr = Auth::id();
@@ -123,13 +131,12 @@ class MakananController extends Controller
     {
         $makanas = Makanan::findOrFail($id);
         // public\images\makanan\1699880689164-Makanbang.png
-        $file = public_path('images/makanan/').$makanas->gambar;
+        $file = public_path('images/makanan/') . $makanas->gambar;
         $file = str_replace('\\', '/', $file);
 
-        if(file_exists($file)){
+        if (file_exists($file)) {
             unlink($file);
-        }
-        else{
+        } else {
             unlink($file);
             dd($file);
         }

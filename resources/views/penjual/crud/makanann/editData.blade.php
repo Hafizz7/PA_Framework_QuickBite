@@ -26,24 +26,19 @@
           </div>
 
           <div class="mb-5 w-full">
-            <label for="twitter" class="block mb-2 font-bold text-gray-600">Harga</label>
+            <label for="Harga" class="block mb-2 font-bold text-gray-600">Harga</label>
             <input type="number" name="harga" placeholder="Harga...." value="{{$makanans->harga}}" class="border border-gray-300 shadow p-3 w-full rounded mb-">
           </div>
 
           <div class="mb-5 w-full">
-            <label for="twitter" class="block mb-2 font-bold text-gray-600">Stock</label>
-            <input type="number" name="stock" placeholder="Stock..." value="{{$makanans->stock}}" class="border border-gray-300 shadow p-3 w-full rounded mb-">
-          </div>
-
-          <div class="mb-5 w-full">
-            <label for="twitter" class="block mb-2 font-bold text-gray-600">Gambar</label>
+            <label for="Gambar" class="block mb-2 font-bold text-gray-600">Gambar</label>
             <input type="file" name="gambar" placeholder="Gambar...." required value="{{$makanans->gambar}}" class="border border-gray-300 shadow p-3 w-full rounded mb-">
           </div>
 
           <div class="mb-5 w-full">
-            <label for="twitter" class="block mb-2 font-bold text-gray-600">Gambar</label>
+            <label for="JenisProduk" class="block mb-2 font-bold text-gray-600">Nama Menu</label>
             <select type="file" name="id_menu" placeholder="Gambar...." required class="border border-gray-300 shadow p-3 w-full rounded mb-">
-                <option value="" disabled selected>Jenis Product...</option>
+                <option value="" disabled selected>Nama Menu...</option>
                 @foreach ($menus as $menus)
                     <option value="{{$menus->id}}">{{$menus->nama_menu}}</option>
                 @endforeach

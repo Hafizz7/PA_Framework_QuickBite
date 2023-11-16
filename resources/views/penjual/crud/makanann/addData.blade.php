@@ -39,9 +39,9 @@
             <input type="file" name="gambar" placeholder="Gambar...." required class="border border-gray-300 shadow p-3 w-full rounded mb-">
           </div>
           <div class="mb-5 w-full">
-            <label for="twitter" class="block mb-2 font-bold text-gray-600">Gambar</label>
+            <label for="namaMenu" class="block mb-2 font-bold text-gray-600">Nama Menu</label>
             <select type="file" name="id_menu" placeholder="Gambar...." required class="border border-gray-300 shadow p-3 w-full rounded mb-">
-                <option value="" disabled selected>Jenis Product...</option>
+                <option value="" disabled selected>Nama Menu...</option>
                 @foreach ($menusss as $menus)
                     <option value="{{$menus->id}}">{{$menus->nama_menu}}</option>
                 @endforeach

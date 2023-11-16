@@ -5,6 +5,7 @@ use App\Models\Toko;
 use App\Models\Makanan;
 use App\Models\Penjual;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController;
@@ -27,13 +28,14 @@ use App\Http\Controllers\daftarmenuController;
 // Route::get('/', function () {
 //     return view('daftarmenu');
 // });
-
 Route::get('/', function () {
     return view('welcome', [
         "toko1" => Toko::all()
     ]);
 });
-
+// Route::controller(ApiController::class)->group(function () {
+//     Route::get('penjual/makanan','geMakanan');
+//     });
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
@@ -88,11 +90,10 @@ Route::controller(MenuController::class)->group(function () {
     Route::post('/menu/penjual/delete/{id}/action', 'delete')->name('penjual.deleteMenu');
 });
 
-Route::get('/get-provinces', [ApiController::class, 'getProvinces']);
+// Route::get('/get-provinces', [ApiController::class, 'getProvinces']);
 
-Route::controller(ApiController::class)->group(function () {
-    Route::get('penjual/crud/makanan/addData', 'getMakanan');
-});
+// Route::get('penjual/makanan', [ApiController::class, 'getMakanan']);
+
 
 Route::middleware('auth')->group(function () {
     Route::middleware('checkRole:penjual')->group(function () {
@@ -105,22 +106,23 @@ Route::middleware('auth')->group(function () {
             ]);
         })->name('penjual.TokoTertentu');
 
-
-
         Route::get('/penjual/toko', function () {
             return view('penjual.toko');
         })->name('penjual.toko');
 
         Route::get('/penjual/menu', function () {
+            //mencari id user yang lagi login
             $id_user = auth()->id();
+            //mencari id user di toko sama nilainya dengan id user yg sedang aktif
             $toko = Toko::where('id_user', $id_user)->first();
 
             if ($toko) {
+                //jika data tersebut ada maka akan menampilkan data tersebut dengan id toko di menu nilainya sama di id toko
                 $id_menuu = Menu::where('id_toko', $toko->id)->get();
             } else {
+                //jika tidak ada maka membuat instance baru yg isi nya kosong
                 $id_menuu = collect();
             }
-
             return view('penjual.menu', [
                 "menu" => $id_menuu,
             ]);
@@ -135,7 +137,6 @@ Route::middleware('auth')->group(function () {
             } else {
                 $makanan = collect();
             }
-
             return view('penjual.makanan', [
                 'makanan' => $makanan,
 

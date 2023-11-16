@@ -52,6 +52,7 @@
             </div>
         </div>
         @foreach ($toko1 as $tkh)
+            {{-- mengambil id yg di klik dengan menggunakan get di dalam daftarmenu controller --}}
             <a href="{{ route('getToko', ['id' => $tkh->id]) }}">
                 <div class="w-[275px] h-[290px]">
                     <div class="w-full h-full rounded-[20px] border border-black">
