@@ -36,7 +36,7 @@
                     <div class="mb-5 w-full">
                         <label for="twitter" class="block mb-2 font-bold text-gray-600">Gambar</label>
                         <input type="file" name="gambar" placeholder="Gambar...." required
-                            class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                            class="border border-gray-300 shadow p-3 w-full rounded mb-" accept="image/*">
                     </div>
 
                     <div class="mb-5 w-full">

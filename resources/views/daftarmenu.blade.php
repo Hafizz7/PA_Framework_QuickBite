@@ -6,7 +6,7 @@
 <body>
 @include('components.navbar')
 @foreach ($tokosss as $tkh)
-<div class="w-screen flex h-[440px]  justify-center">
+<div class="w-full flex h-[440px]  justify-center">
     <div class="bg-[rgb(211,242,178)] w-8/12 h-3/5 mt-36 flex flex-col justify-center items-center rounded-xl">
         <div class="bg-slate-900 static justify-center flex">
             <div class=" top-[90px] absolute z-0">
@@ -29,7 +29,7 @@
 </div>
 @endforeach
 @foreach ($menusss as $mnu)
-<div class="h-auto w-screen  flex items-center flex-wrap">
+<div class="h-auto w-full  flex items-center flex-wrap">
     <h1 class="text-black text-3xl font-medium font-['Inter'] text-left ml-[5%]">{{$mnu->nama_menu}}</h1>
     <div class=" w-full mx-16 my-2 flex flex-wrap gap-10 bg-[#E6F9D3] rounded-xl">
         @foreach ($makanansss->where('id_menu', $mnu->id) as $mkn)

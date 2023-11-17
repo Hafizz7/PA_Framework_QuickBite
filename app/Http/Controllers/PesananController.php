@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use App\Models\Toko;
 use App\Models\pesanan;
+use App\Models\Makanan;
 use App\Models\keranjang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,13 +20,14 @@ class PesananController extends Controller
         $status = 'dalamAntrian';
         //take digunakan untnuk membatasi perulangn
         foreach ($keranjang->take($totalKeranjang) as $keranjangg){
+            $deskripsi = Makanan::where('nama', $keranjangg->nama)->value('deskripsi');
                 pesanan::create([
                     'nama' => $keranjangg->nama,
                     'harga' => $keranjangg->harga,
                     'gambar' => $keranjangg->gambar,
                     'jumlah' => 1, // Sesuaikan jumlah sesuai kebutuhan atau biarkan default
                     'status' => $status,
-                    'deskripsi' => $$keranjang->deskripsi,
+                    'deskripsi' => $deskripsi,
                     'id_toko' => $keranjangg->id_toko, // Sesuaikan dengan kolom di tabel Makanan
                     'id_user' => $user,
                 ]);

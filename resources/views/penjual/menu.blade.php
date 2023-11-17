@@ -1,6 +1,6 @@
 @extends('layouts.global')
 @section('title')
-Menu
+Dashboard - Menu
 @endsection
 
 @section('content')
