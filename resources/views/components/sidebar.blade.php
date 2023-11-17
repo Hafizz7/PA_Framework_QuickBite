@@ -28,7 +28,7 @@
                 <i class="fas fa-table mr-3"></i>
                 Makanan
             </a>
-            <a href="" class="flex items-center text-white py-4 pl-6 hover:bg-[#1947ee]">
+            <a href="{{route('pembeli.getDataPesanan')}}" class="flex items-center text-white py-4 pl-6 hover:bg-[#1947ee]">
                 <i class="fas fa-align-left mr-3"></i>
                 Pesanan
             </a>

@@ -4,6 +4,7 @@ use App\Models\Menu;
 use App\Models\Toko;
 use App\Models\Makanan;
 use App\Models\Penjual;
+use App\Models\keranjang;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\MakananController;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\daftarmenuController;
 
 /*
@@ -28,8 +31,48 @@ use App\Http\Controllers\daftarmenuController;
 // Route::get('/', function () {
 //     return view('daftarmenu');
 // });
+// resources\views\pembeli\keranjang.blade.php
+// Route::get('/pembeli/keranjang', function () {
+//     $id_userr = Auth::id();
+//     $keranjang = keranjang::where('id_user' , $id_userr)->first();
+//     return view('pembeli.keranjang', [
+//         'toko1' => $keranjang,
+
+//     ]);
+// });
 Route::get('/', function () {
+    $id_userr = Auth::id();
+    // return $id_userr;
+    $keranjang = keranjang::where('id_user' , $id_userr)->get();
+    if($keranjang){
+        // return $keranjang;
+        $keranajngsss = $keranjang;
+    }
+    else{
+        $keranajngsss = collect();
+    }
+
+    // if($id_userr){
+    //     if($keranjang){
+    //         $keranajngsss = $keranjang;
+    //     }
+    //     else{
+    //         $keranajngsss = collect();
+    //     }
+
+    // }
+    // else{
+    //     $keranajngsss = $keranjang;
+    // }
+    // if($keranjang){
+    //     // $keranjang = collect();
+    // }
+    // else{
+    //     // $keranjang = collect();
+    // }
+
     return view('welcome', [
+        'keranjangss' => $keranajngsss,
         "toko1" => Toko::all()
     ]);
 });
@@ -59,9 +102,20 @@ Route::get('/logout', [
 ])->name('logout');
 
 //controller Menu
+Route::controller(PesananController::class)->group(function () {
+    Route::get('pesanan/tambah', 'addPesanan')->name('pembeli.addPesanan');
+    Route::get('penjual/pesanan/tambah', 'getDataPesanan')->name('pembeli.getDataPesanan');
 
+});
+Route::controller(KeranjangController::class)->group(function () {
+    Route::get('keranjang/tambah/{id}', 'addKeranjangg')->name('pembeli.addKeranjangg');
+    // Route::get('/copy-makanan-to-keranjang', 'KeranjangController@copyMakananToKeranjang');
+    // Route::post('keranjang/action/{id}', 'pushKeranjang')->name('pembeli.addKeranjang');
+    Route::get('keranjang/getData/{id}', 'getMakanan')->name('getMakanan');
 
+});
 Route::controller(daftarmenuController::class)->group(function () {
+
     Route::get('daftarmenu/getData/{id}', 'getData')->name('getToko');
 });
 
