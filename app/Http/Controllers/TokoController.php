@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Http;
 
 class TokoController extends Controller
 {
+    public function index(){
+        $userId = auth()->id();
+        $endpoint = env('BASE_ENV') . '/api/penjual/toko/toko?user_id=' . $userId;
+        $data = Http::get($endpoint);
+        return view('penjual/toko',[
+            'tokosss'=>$data
+        ]);
+        }
     public function tambah()
     {
         $response = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');
@@ -32,8 +40,8 @@ class TokoController extends Controller
             'nama_toko' => 'required|string|max:30',
             'deskripsi_toko' => 'required|string',
             'gambar' => 'required',
-            'id_user' => 'required',
-            'gambar.*' => 'mimes:jpeg,png,jpg,gif|max:2000',
+            'id_user' => 'required',            
+            'gambar.*' => 'mimes:jpg,jpeg,png|max:2000',
             'alamat' => 'required|string',
         ]);
 
@@ -119,3 +127,4 @@ class TokoController extends Controller
         Berhasil Dihapus');
     }
 }
+

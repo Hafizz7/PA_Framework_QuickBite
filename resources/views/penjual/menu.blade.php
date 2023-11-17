@@ -57,10 +57,11 @@ Dashboard - Menu
                                             <a href="{{route('penjual.editMenu', $menus->id)}}">
                                                 <button class="px-4 py-2 mr-1 bg-yellow-300 rounded-md text">Edit</button>
                                             </a>
-                                            <form action="{{route('penjual.deleteMenu', $menus->id)}}" method="POST">
+                                            <form action="{{route('penjual.deleteMenu', $menus->id)}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                 @csrf
-                                                <button class="px-4 py-2 bg-red-600 rounded-md text text-white">Hapus</button>
+                                                <button type="submit" class="px-4 py-2 bg-red-600 rounded-md text text-white">Hapus</button>
                                             </form>
+
                                         </div>
                                     </td>
                                 </tr>

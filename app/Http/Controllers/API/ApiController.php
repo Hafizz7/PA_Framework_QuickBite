@@ -6,19 +6,23 @@ use App\Models\Toko;
 use App\Models\Makanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {
-    public function getToko()
-    {
-        $toko = Toko::all();
-        $response = [
-            'status' => 'success',
-            'message' => 'Data Berhasil Diambil',
-            'dataMakanan' => $toko
-        ];
-        return response()->json($response);
-    }
+    // public function getToko()
+    // {
+    //     // Mengambil data toko berdasarkan ID pengguna
+    //     $tokos = Toko::all();
+
+    //     $response = [
+    //         'status' => 'success',
+    //         'message' => 'Data Berhasil Diambil',
+    //         'dataToko' => $tokos
+    //     ];
+
+    //     return response()->json($response);
+    // }
     /**
      * Display a listing of the resource.
      */

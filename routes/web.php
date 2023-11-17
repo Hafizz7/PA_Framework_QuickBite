@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController2;
 use App\Models\Menu;
 use App\Models\Toko;
 use App\Models\Makanan;
@@ -51,26 +52,6 @@ Route::get('/', function () {
     else{
         $keranajngsss = collect();
     }
-
-    // if($id_userr){
-    //     if($keranjang){
-    //         $keranajngsss = $keranjang;
-    //     }
-    //     else{
-    //         $keranajngsss = collect();
-    //     }
-
-    // }
-    // else{
-    //     $keranajngsss = $keranjang;
-    // }
-    // if($keranjang){
-    //     // $keranjang = collect();
-    // }
-    // else{
-    //     // $keranjang = collect();
-    // }
-
     return view('welcome', [
         'keranjangss' => $keranajngsss,
         "toko1" => Toko::all()
@@ -128,7 +109,12 @@ Route::controller(MakananController::class)->group(function () {
     // Route::post('admin/barang/edit/{id}/action', 'update')->name('admin.update');
 });
 
+Route::get('api/penjual/toko/toko', [ApiController2::class, 'getToko']);
+
+// Route::get('/penjual/toko/toko', [ApiController::class, 'getToko']);
+
 Route::controller(TokoController::class)->group(function () {
+    Route::get('toko/penjual/toko', 'index')->name('penjual.TokoTertentu');
     Route::get('toko/penjual/toko/tambah', 'tambah')->name('penjual.addToko');
     Route::post('toko/penjual/tambah/action', 'push')->name('penjual.push');
     Route::get('toko/penjual/toko/edit/{id}', 'edit')->name('penjual.edittoko');
@@ -152,13 +138,13 @@ Route::controller(MenuController::class)->group(function () {
 Route::middleware('auth')->group(function () {
     Route::middleware('checkRole:penjual')->group(function () {
 
-        Route::get('toko/penjual/toko', function(){
-            $id_user = auth()->id();
-            $tokos = Toko::all()->where('id_user', $id_user);
-            return view('penjual.toko', [
-                "tokotertentu" => $tokos,
-            ]);
-        })->name('penjual.TokoTertentu');
+        // Route::get('toko/penjual/toko', function(){
+        //     $id_user = auth()->id();
+        //     $tokos = Toko::all()->where('id_user', $id_user);
+        //     return view('penjual.toko', [
+        //         "tokotertentu" => $tokos,
+        //     ]);
+        // })->name('penjual.TokoTertentu');
 
         Route::get('/penjual/toko', function () {
             return view('penjual.toko');
@@ -210,3 +196,4 @@ Route::middleware('auth')->group(function () {
         })->name('penjual.addMenu');
     });
 });
+
