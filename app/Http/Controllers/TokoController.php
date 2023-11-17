@@ -33,7 +33,7 @@ class TokoController extends Controller
             'deskripsi_toko' => 'required|string',
             'gambar' => 'required',
             'id_user' => 'required',
-            'gambar.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000',
+            'gambar.*' => 'mimes:jpeg,png,jpg,gif|max:2000',
             'alamat' => 'required|string',
         ]);
 

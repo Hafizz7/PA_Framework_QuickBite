@@ -1,6 +1,6 @@
 @extends('layouts.global')
 @section('title')
-Toko
+Dashboard - Toko
 @endsection
 
 @section('content')

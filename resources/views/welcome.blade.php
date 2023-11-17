@@ -1,14 +1,13 @@
 @extends('layouts.global')
 @section('title')
-    Data Barang
+    QuickBite
 @endsection
 @section('content')
 
     <body>
-
         @include('components.navbar')
         {{-- hero --}}
-        <div class="w-screen flex h-[340px] bg-slate-700 ">
+        <div class="w-full flex h-[340px] bg-slate-700 ">
             <div class="bg-[#D3F2B2] w-3/4 ">
                 <div class=" w-3/5 ml-24 h-5/6 mt-9">
                     {{-- <button id="toggleButton" class="p-4 bg-blue-500 text-white">Tekan Saya</button>
@@ -40,7 +39,7 @@
                 </div>
             </div>
             <div class="bg-slate-900 static ">
-                <div class="left-[790px] top-[90px] absolute z-0">
+                <div class="left-[60%] top-[90px] absolute z-0">
                     <img class="w-[282px] h-[282px] rounded-full shadow-lg" src="assets/images/Makann.jpg">
                 </div>
 
@@ -49,7 +48,7 @@
             </div>
         </div>
 
-        <div class="h-auto w-screen flex items-center justify-center flex-wrap">
+        {{-- <div class="h-auto w-screen flex items-center justify-center flex-wrap">
             <div class=" w-full mx-16 my-2 flex flex-wrap gap-10 ">
                 <div class="w-[275px] h-[290px]">
                     <div class="w-full h-full rounded-[20px] border border-black">
@@ -64,24 +63,40 @@
                     </div>
                 </div>
                 @foreach ($toko1 as $tkh)
-                    {{-- mengambil id yg di klik dengan menggunakan get di dalam daftarmenu controller --}}
-                    <a href="{{ route('getToko', ['id' => $tkh->id]) }}">
-                        <div class="w-[275px] h-[290px]">
-                            <div class="w-full h-full rounded-[20px] border border-black">
-                                <div class="w-[262px] h-44 rounded-[20px] border border-black ml-1 mt-1">
-                                    <img src="{{ asset('images/toko/' . $tkh->gambar) }}"
-                                        class="w-[262px] h-44 rounded-[20px]">
-                                </div>
-                                <div class="text-black text-[22px] font-normal font-['Inter'] ml-1 h-16 flex items-center">
-                                    {{ $tkh->nama_toko }}</div>
-                                <div class="text-black text-xs font-light font-['Inter'] ml-1">{{ $tkh->deskripsi_toko }}
-                                </div>
-                                <div class="text-black text-lg font-normal font-['Inter'] ml-1">{{ $tkh->alamat }}</div>
+                <a href="{{ route('getToko', ['id' => $tkh->id]) }}" class="hover-card">
+                    <div class="w-[275px] h-[290px] overflow-hidden transform transition-transform duration-300 ease-in-out hover:scale-105">
+                        <div class="w-full h-full rounded-[20px] border border-black overflow-hidden">
+                            <div class="w-[262px] h-44 rounded-[20px] border border-black ml-1 mt-1 overflow-hidden">
+                                <img src="{{ asset('images/toko/' . $tkh->gambar) }}" class="w-[262px] h-44 rounded-[20px]">
                             </div>
+                            <div class="text-black text-[22px] font-normal font-['Inter'] ml-1 h-16 flex items-center">
+                                {{ $tkh->nama_toko }}
+                            </div>
+                            <div class="text-black text-xs font-light font-['Inter'] ml-1">{{ $tkh->deskripsi_toko }}</div>
+                            <div class="text-black text-lg font-normal font-['Inter'] ml-1">{{ $tkh->alamat }}</div>
                         </div>
-                    </a>
-                @endforeach
-            </div>
+                    </div>
+                </a>
+            @endforeach
         </div>
+        </div> --}}
+
+        <section id="toko" class="h-auto bg-gray-100 flex items-start overflow-x-auto">
+
+            <div class="container mx-auto py-4 px-14 text-white">
+                <div class="flex justify-start flex-wrap">
+                    <!-- Card -->
+                    @foreach ($toko1 as $tkh)
+                        <a href="{{ route('getToko', ['id' => $tkh->id]) }}" class="px-2 py-2">
+                            <div class="border max-w-fit bg-[#D3F2B2] bg-opacity-60 p-4 rounded-2xl hover-card overflow-hidden transform transition-transform duration-300 ease-in-out hover:scale-105 border-spacing-1 border-black border-opacity-40 flex-shrink-0">
+                                <img src="{{ asset('images/toko/' . $tkh->gambar) }}" alt="Gambar Toko" class="w-full h-32 object-cover mb-4 rounded">
+                                <h1 class="text-black text-xl font-medium text-center py-1">{{ $tkh->nama_toko }}</h1>
+                                <p class="text-black text-xs font-normal pt-2 font-['Inter'] ml-1">{{ $tkh->deskripsi_toko }}</p>
+                                <p class="text-black text-md font-normal font-['Inter'] ml-1">{{ $tkh->alamat }}</p>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </section>
     </body>
-    
