@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\API\ApiController;
 
 class AuthController extends Controller
 {
@@ -59,7 +61,7 @@ class AuthController extends Controller
     {
 
         $username = $request->username;
-        
+
         $data = [
             'username' => $request->username,
             'password' => $request->password,
@@ -88,4 +90,5 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/');
     }
+    // AuthController.php
 }

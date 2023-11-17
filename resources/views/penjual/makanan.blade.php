@@ -69,7 +69,7 @@ Menu
                                             <a href="{{route('penjual.editMakanan', $makanans->id)}}">
                                                 <button class="px-4 py-2 mr-1 bg-yellow-300 rounded-md text">Edit</button>
                                             </a>
-                                            <form action="{{route('penjual.deleteMakanan', $makanans->id)}}" method="POST">
+                                            <form action="{{route('penjual.deleteMakanan', $makanans->id)}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                 @csrf
                                                 <button class="px-4 py-2 bg-red-600 rounded-md text text-white">Hapus</button>
                                             </form>

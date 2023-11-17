@@ -10,15 +10,16 @@ Toko
         <div class="m-4 p-8 relative bg-slate-100 rounded-lg drop-shadow-md">
             <p class="text-4xl font-bold mb-4">Data Toko</p>
             <hr>
+            {{-- @if (!empty($tokosss['dataToko']) && !$tokosss['dataToko']->isEmpty()) --}}
+            @if (empty($tokosss['dataToko']) || empty($tokosss['dataToko'][0]))
 
-            @if ($tokotertentu->isEmpty())
             <div class="w-full h-auto flex justify-end mt-2">
                 <a href="{{route('penjual.addToko')}}">
                     <button class="px-4 py-2 bg-green-600 rounded-md text text-white">Tambah</button>
                 </a>
             </div><br>
             @endif
-            @foreach ($tokotertentu as $tkh)
+            @foreach ($tokosss['dataToko'] as $tkh)
             {{-- <div class="w-full h-auto flex justify-end mt-2">
                 <a href="{{route('penjual.addToko')}}">
                     <button class="px-4 py-2 bg-green-600 rounded-md text text-white">Tambah</button>
@@ -26,7 +27,7 @@ Toko
             </div><br> --}}
             <div class="flex flex-col w-full justify-center items-center">
                 <div class="w-[200px] h-[200px] bg-white rounded-full drop-shadow-md">
-                    <img src="{{asset('images/toko/'. $tkh->gambar)}}" alt="" class="rounded-full drop-shadow-md w-[200px] h-[200px]">
+                    <img src="{{asset('images/toko/'. $tkh['gambar'])}}" alt="" class="rounded-full drop-shadow-md w-[200px] h-[200px]">
                 </div>
             </div>
             <div class="relative overflow-x-auto">
@@ -50,21 +51,21 @@ Toko
                     <tbody>
                             <tr class="bg-white border-b">
                                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    {{$tkh->nama_toko}}
+                                    {{$tkh['nama_toko']}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{$tkh->deskripsi_toko}}
+                                    {{$tkh['deskripsi_toko']}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{$tkh->alamat}}
+                                    {{$tkh['alamat']}}
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="h-auto flex flex-row">
-                                        <a href="{{route('penjual.edittoko',$tkh->id)}}">
+                                        <a href="{{route('penjual.edittoko',$tkh['id'])}}">
                                             <button class="px-4 py-2 mr-1 bg-yellow-300 rounded-md text">Edit</button>
                                         </a>
-                                        <form action="{{route('penjual.deletetoko', $tkh->id)}}" method="POST">
+                                        <form action="{{route('penjual.deletetoko', $tkh['id'])}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             @csrf
                                             <button class="px-4 py-2 bg-red-600 rounded-md text text-white">Hapus</button>
                                         </form>

@@ -14,14 +14,14 @@ use PhpParser\Node\Stmt\Return_;
 
 class MakananController extends Controller
 {
-    public function index()
-    {
-        $endpoint = env('BASE_ENV').'/api/api/welcome';
-        $data = Http::get($endpoint);
-        return view('', [
-            'makanannn' => $data
-        ]);
-    }
+    // public function index()
+    // {
+    //     $endpoint = env('BASE_ENV').'/api/api/welcome';
+    //     $data = Http::get($endpoint);
+    //     return view('', [
+    //         'makanannn' => $data
+    //     ]);
+    // }
     public function tambah()
     {
         $id_userr = Auth::id();
@@ -52,7 +52,7 @@ class MakananController extends Controller
             'id_menu' => 'required',
             'id_toko' => 'required',
             'gambar' => 'required',
-            'gambar.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000'
+            'gambar.*' => 'mimes:jpg,jpeg,png|max:2000'
         ]);
         if ($request->hasFile('gambar')) {
             $gambar = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('gambar')->getClientOriginalName());
