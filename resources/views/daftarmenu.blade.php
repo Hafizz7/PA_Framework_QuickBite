@@ -45,11 +45,18 @@
                         <h1 class="text-sm">{{$mkn->harga}}</h1>
                     </div>
                     <div class="bg-[#84B74E] rounded-md w-20 h-8 flex items-center justify-center">
+                        <a href="">
                         <h1 class="">Buy Now</h1>
+                        </a>
                     </div>
 
                     <div class="bg-[#84B74E] ml-10 mr-2 w-24 h-8 flex items-center justify-center rounded-tl-[35.45px] rounded-tr-[10px] rounded-br-[10px]">
+                        {{-- <a href="{{ route('getToko', ['id' => $tkh->id]) }}"> --}}
+                        {{-- <a href="{{route('pembeli.addKeranjang', $mkn->id)}}"> --}}
+                        {{-- <a href="{{route('getMakanan', ['id' => $mkn->id])}}"> --}}
+                        <a href="{{route('pembeli.addKeranjangg', $mkn->id)}}">
                         <h1>tambah</h1>
+                        </a>
                     </div>
                 </div>
             </div>
