@@ -30,9 +30,6 @@ Menu
                                     Harga
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Nama Menu
-                                </th>
-                                <th scope="col" class="px-6 py-3">
                                     Deskripsi
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -54,9 +51,6 @@ Menu
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$makanans->harga}}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{$makanans->menu->nama_menu}}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$makanans->deskripsi}}

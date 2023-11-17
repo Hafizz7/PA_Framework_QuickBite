@@ -12,7 +12,7 @@ class keranjang extends Model
 {
     use HasFactory;
     protected $table = 'keranjang';
-    protected $fillable = ['nama','harga','jumlah','gambar','id_menu', 'id_toko','id_user'];
+    protected $fillable = ['nama','harga','jumlah','gambar','deskripsi', 'id_toko','id_user'];
 
     public function menu(): BelongsTo
     {

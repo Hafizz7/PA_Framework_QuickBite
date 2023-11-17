@@ -25,7 +25,7 @@ class PesananController extends Controller
                     'gambar' => $keranjangg->gambar,
                     'jumlah' => 1, // Sesuaikan jumlah sesuai kebutuhan atau biarkan default
                     'status' => $status,
-                    'id_menu' => $keranjangg->id_menu,
+                    'deskripsi' => $$keranjang->deskripsi,
                     'id_toko' => $keranjangg->id_toko, // Sesuaikan dengan kolom di tabel Makanan
                     'id_user' => $user,
                 ]);
