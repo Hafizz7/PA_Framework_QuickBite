@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlamatUserController;
 use App\Http\Controllers\ApiController2;
 use App\Models\Menu;
 use App\Models\Toko;
@@ -43,7 +44,12 @@ Route::get('/', function () {
         'keranjangss' => $keranajngsss,
         "toko1" => Toko::all()
     ]);
-});
+})->name('welcomeee');
+
+Route::get('/pembeli/alamat', function(){
+    return view('pembeli.alamat');
+})->name('alamat.pembeli');
+
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
@@ -64,13 +70,15 @@ Route::get('/logout', [
     AuthController::class, 'logout'
 ])->name('logout');
 
+Route::controller(AlamatUserController::class)->group(function () {
+    Route::get('alamat/tambah', 'getALamat')->name('pembeli.getALamat');
+    Route::post('alamat/tambah/action', 'pushAlamat')->name('pembeli.pushAlamat');
+});
+
 Route::controller(PesananController::class)->group(function () {
     Route::get('pesanan/tambah', 'addPesanan')->name('pembeli.addPesanan');
     Route::get('penjual/pesanan/tambah', 'getDataPesanan')->name('pembeli.getDataPesanan');
     Route::post('penjual/pesanan/edit/{id}/action', 'updateStatus')->name('penjual.updateStatus');
-
-
-
 });
 Route::controller(KeranjangController::class)->group(function () {
     Route::get('keranjang/tambah/{id}', 'addKeranjangg')->name('pembeli.addKeranjangg');
