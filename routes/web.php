@@ -70,10 +70,16 @@ Route::get('/logout', [
     AuthController::class, 'logout'
 ])->name('logout');
 
+
+// Ubah Profil
+Route::get('/profile/edit', [AuthController::class, 'edit'])->name('profile.edit')->middleware('auth');
+Route::post('/profile/update', [AuthController::class, 'update'])->name('profile.update')->middleware('auth');
+
 Route::controller(AlamatUserController::class)->group(function () {
     Route::get('alamat/tambah', 'getALamat')->name('pembeli.getALamat');
     Route::post('alamat/tambah/action', 'pushAlamat')->name('pembeli.pushAlamat');
 });
+
 
 Route::controller(PesananController::class)->group(function () {
     Route::get('pesanan/tambah', 'addPesanan')->name('pembeli.addPesanan');

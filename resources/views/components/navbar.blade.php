@@ -4,9 +4,9 @@
     </div>
     <div class=" w-screen text-center">
         <ul class="flex flex-row gap-14 justify-center underline-offset-2">
-            <li class="hover:underline"><a href="{{ route('penjual.addToko') }}">Home</a></li>
-            <li class="hover:underline"><a href="{{ route('login') }}">Menu</a></li>
-            <li class="hover:underline"><a href="{{ route('penjual.dashboard') }}">About</a></li>
+            <li class="hover:underline hover:text-[#84B74E]"><a href="/#">Home</a></li>
+            <li class="hover:underline hover:text-[#84B74E]"><a href="/#toko">Toko</a></li>
+            <li class="hover:underline hover:text-[#84B74E]"><a href="/#">About</a></li>
         </ul>
     </div>
     <div class="w-1/5 flex text-center justify-center">
@@ -16,9 +16,19 @@
             </a>
         @endguest
         @auth
-            <a href="{{ route('logout') }}" class="hover:text-xl">
-                <div>Logout</div>
+            @if(Auth::user()->role == 'pembeli')
+                <a href="{{ route('profile.edit')}}" class="transition-transform transform hover:scale-105  hover:text-[#84B74E] mr-4">
+                    <div>{{ ucfirst(Auth::user()->username) }}</div>
+                </a>
+            @endif
+            @if(Auth::user()->role == 'penjual')
+            <a href="{{ route('penjual.dashboard') }}" class="transition-transform transform hover:scale-105  hover:text-[#84B74E] mr-4">
+                <div>{{ ucfirst(Auth::user()->username) }}</div>
             </a>
+            @endif
+        <a href="{{ route('logout') }}" class="transition-transform transform hover:scale-105 hover:text-[#84B74E]">
+            <div>Logout</div>
+        </a>
         @endauth
     </div>
     @auth
