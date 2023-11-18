@@ -28,19 +28,6 @@ use App\Http\Controllers\daftarmenuController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('daftarmenu');
-// });
-// resources\views\pembeli\keranjang.blade.php
-// Route::get('/pembeli/keranjang', function () {
-//     $id_userr = Auth::id();
-//     $keranjang = keranjang::where('id_user' , $id_userr)->first();
-//     return view('pembeli.keranjang', [
-//         'toko1' => $keranjang,
-
-//     ]);
-// });
 Route::get('/', function () {
     $id_userr = Auth::id();
     // return $id_userr;
@@ -57,9 +44,6 @@ Route::get('/', function () {
         "toko1" => Toko::all()
     ]);
 });
-// Route::controller(ApiController::class)->group(function () {
-//     Route::get('penjual/makanan','geMakanan');
-//     });
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
@@ -76,22 +60,20 @@ Route::post('/register/action', [
     AuthController::class, 'registerAction'
 ])->name('register.action');
 
-
-
 Route::get('/logout', [
     AuthController::class, 'logout'
 ])->name('logout');
 
-//controller Menu
 Route::controller(PesananController::class)->group(function () {
     Route::get('pesanan/tambah', 'addPesanan')->name('pembeli.addPesanan');
     Route::get('penjual/pesanan/tambah', 'getDataPesanan')->name('pembeli.getDataPesanan');
+    Route::post('penjual/pesanan/edit/{id}/action', 'updateStatus')->name('penjual.updateStatus');
+
+
 
 });
 Route::controller(KeranjangController::class)->group(function () {
     Route::get('keranjang/tambah/{id}', 'addKeranjangg')->name('pembeli.addKeranjangg');
-    // Route::get('/copy-makanan-to-keranjang', 'KeranjangController@copyMakananToKeranjang');
-    // Route::post('keranjang/action/{id}', 'pushKeranjang')->name('pembeli.addKeranjang');
     Route::get('keranjang/getData/{id}', 'getMakanan')->name('getMakanan');
 
 });
@@ -106,13 +88,7 @@ Route::controller(MakananController::class)->group(function () {
     Route::get('penjual/makanan/edit/{id}', 'edit')->name('penjual.editMakanan');
     Route::post('makanann/penjual/makanan/edit/{id}/action', 'update')->name('penjual.updateMakanan');
     Route::post('penjual/makanan/edit/{id}/action', 'delete')->name('penjual.deleteMakanan');
-    // Route::post('admin/barang/edit/{id}/action', 'update')->name('admin.update');
 });
-
-Route::get('api/penjual/toko/toko', [ApiController2::class, 'getToko']);
-
-// Route::get('/penjual/toko/toko', [ApiController::class, 'getToko']);
-
 Route::controller(TokoController::class)->group(function () {
     Route::get('toko/penjual/toko', 'index')->name('penjual.TokoTertentu');
     Route::get('toko/penjual/toko/tambah', 'tambah')->name('penjual.addToko');
@@ -137,14 +113,6 @@ Route::controller(MenuController::class)->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::middleware('checkRole:penjual')->group(function () {
-
-        // Route::get('toko/penjual/toko', function(){
-        //     $id_user = auth()->id();
-        //     $tokos = Toko::all()->where('id_user', $id_user);
-        //     return view('penjual.toko', [
-        //         "tokotertentu" => $tokos,
-        //     ]);
-        // })->name('penjual.TokoTertentu');
 
         Route::get('/penjual/toko', function () {
             return view('penjual.toko');

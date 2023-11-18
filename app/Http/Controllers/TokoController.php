@@ -12,7 +12,7 @@ class TokoController extends Controller
 {
     public function index(){
         $userId = auth()->id();
-        $endpoint = env('BASE_ENV') . '/api/penjual/toko/toko?user_id=' . $userId;
+        $endpoint = env('BASE_ENV') . '/api/api/penjual/toko/toko?user_id=' . $userId;
         $data = Http::get($endpoint);
         return view('penjual/toko',[
             'tokosss'=>$data
@@ -40,7 +40,7 @@ class TokoController extends Controller
             'nama_toko' => 'required|string|max:30',
             'deskripsi_toko' => 'required|string',
             'gambar' => 'required',
-            'id_user' => 'required',            
+            'id_user' => 'required',
             'gambar.*' => 'mimes:jpg,jpeg,png|max:2000',
             'alamat' => 'required|string',
         ]);

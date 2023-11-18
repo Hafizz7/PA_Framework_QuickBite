@@ -19,18 +19,18 @@ class PesananController extends Controller
         $totalKeranjang = keranjang::where('id_user', $user)->count();
         $status = 'dalamAntrian';
         //take digunakan untnuk membatasi perulangn
-        foreach ($keranjang->take($totalKeranjang) as $keranjangg){
+        foreach ($keranjang->take($totalKeranjang) as $keranjangg) {
             $deskripsi = Makanan::where('nama', $keranjangg->nama)->value('deskripsi');
-                pesanan::create([
-                    'nama' => $keranjangg->nama,
-                    'harga' => $keranjangg->harga,
-                    'gambar' => $keranjangg->gambar,
-                    'jumlah' => 1, // Sesuaikan jumlah sesuai kebutuhan atau biarkan default
-                    'status' => $status,
-                    'deskripsi' => $deskripsi,
-                    'id_toko' => $keranjangg->id_toko, // Sesuaikan dengan kolom di tabel Makanan
-                    'id_user' => $user,
-                ]);
+            pesanan::create([
+                'nama' => $keranjangg->nama,
+                'harga' => $keranjangg->harga,
+                'gambar' => $keranjangg->gambar,
+                'jumlah' => 1, // Sesuaikan jumlah sesuai kebutuhan atau biarkan default
+                'status' => $status,
+                'deskripsi' => $deskripsi,
+                'id_toko' => $keranjangg->id_toko, // Sesuaikan dengan kolom di tabel Makanan
+                'id_user' => $user,
+            ]);
         }
         keranjang::where('id_user', $user)->delete();
         return redirect()->back()->with('success', 'Data berhasil dipindahkan ke Keranjang.');
@@ -52,8 +52,33 @@ class PesananController extends Controller
         // return $keranjang;
         return view('penjual.pesanan', [
             'keranjangg' => $keranjang,
-            'tokosss' => $id_toko, // Assuming you want to pass the ID of the store
         ]);
     }
+    // public function updateStatus(Request $request, pesanan $pesanan){
+    //     $request->validate([
+    //         'status' => 'required',
+    //     ]);
 
+    //     $pesanan->update([
+    //         'status' => $request->input('status'),
+    //     ]);
+
+    //     return redirect()->back()->with('success', 'Role user berhasil diubah');
+    // }
+
+
+    public function updateStatus(Request $request, $id)
+    {
+
+        $request->validate([
+            'status' => 'required|string|max:30',
+        ]);
+        $pesanans = pesanan::findOrFail($id);
+
+        $pesanans->update([
+            'status' => $request->status,
+        ]);
+        // $makanas->delete();
+        return redirect()->back()->with('success', 'Status pesanan berhasil diubah');
+    }
 }

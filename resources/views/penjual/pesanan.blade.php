@@ -18,16 +18,16 @@ Dashboard - Pesanan
                                     No
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Nama
+                                    Nama Makanan
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Harga
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Deskripsi
+                                    Alamat
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Gambar
+                                    Status
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Aksi
@@ -35,33 +35,31 @@ Dashboard - Pesanan
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($keranjangg as $index=> $makanans)
+                            @foreach ($keranjangg as $index=> $pesanan)
                                 <tr class="bg-white border-b">
                                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                         {{$index+1}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$makanans->nama}}
+                                        {{$pesanan->nama}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$makanans->harga}}
+                                        {{$pesanan->harga}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$makanans->deskripsi}}
+                                        {{$pesanan->deskripsi}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$makanans->gambar}}
+                                        <form action="{{route('penjual.updateStatus', $pesanan->id)}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin Update data ini?');">
+                                        <select name="status" class="mb-5 border border-gray-300 shadow p-3 w-full rounded mb-">
+                                            <option value="Dipesan" {{ $pesanan->status == 'Dipesan' ? 'selected' : '' }}>Dipesan</option>
+                                            <option value="Dalam Proses" {{ $pesanan->status == 'Dalam Proses' ? 'selected' : '' }}>Dalam Proses</option>
+                                        </select>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="w-full h-auto flex flex-row">
-                                            <a href="">
-                                                <button class="px-4 py-2 mr-1 bg-yellow-300 rounded-md text">Edit</button>
-                                            </a>
-                                            <form action="" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                                                @csrf
-                                                <button class="px-4 py-2 bg-red-600 rounded-md text text-white">Hapus</button>
-                                            </form>
-                                        </div>
+                                            @csrf
+                                            <button class="px-4 py-2 bg-blue-600 rounded-md text text-white">Update</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

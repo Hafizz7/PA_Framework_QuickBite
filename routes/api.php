@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::prefix('api/penjual/toko')->group(function () {
 //     Route::get('toko', [ApiController2::class, 'getToko']);
 // });
-
+Route::get('api/penjual/toko/toko', [ApiController::class, 'getToko']);
 
 // Route::controller(ApiController::class)->group(function () {
 //     Route::get('toko/penjual/toko', function(){

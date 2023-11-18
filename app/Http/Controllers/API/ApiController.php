@@ -10,16 +10,22 @@ use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {
-    // public function getToko()
-    // {
-    //     // Mengambil data toko berdasarkan ID pengguna
-    //     $tokos = Toko::all();
+    public function getToko(Request $request)
+    {
+        // Get the user ID from the request parameters
+        $userId = $request->input('user_id', Auth::id());
 
-    //     $response = [
-    //         'status' => 'success',
-    //         'message' => 'Data Berhasil Diambil',
-    //         'dataToko' => $tokos
-    //     ];
+        // Retrieve toko data based on the user ID
+        $tokos = Toko::where('id_user', $userId)->get();
+
+        $response = [
+            'status' => 'success',
+            'message' => 'Data Berhasil Diambil',
+            'dataToko' => $tokos
+        ];
+
+        return response()->json($response);
+    }
 
     //     return response()->json($response);
     // }
