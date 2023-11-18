@@ -52,6 +52,38 @@ use App\Http\Controllers\pesananUserControllerAlamat;
 
 
 
+// resources\views\pembeli\daftarPesanan.blade.php
+Route::get('/pembeli/daftarPesanan', function(){
+    $id_userr = Auth::id();
+    // return $id_userr;
+    $keranjang = keranjang::where('id_user' , $id_userr)->get();
+    if($keranjang){
+        $keranajngsss = $keranjang;
+    }
+    else{
+        $keranajngsss = collect();
+    }
+    return view('pembeli.daftarPesanan', [
+        'keranjangss' => $keranajngsss,
+    ]);
+});
+
+Route::get('/daftarToko', function () {
+    $id_userr = Auth::id();
+    // return $id_userr;
+    $keranjang = keranjang::where('id_user' , $id_userr)->get();
+    if($keranjang){
+        // return $keranjang;
+        $keranajngsss = $keranjang;
+    }
+    else{
+        $keranajngsss = collect();
+    }
+    return view('daftarToko', [
+        'keranjangss' => $keranajngsss,
+        "toko1" => Toko::all()
+    ]);
+})->name('daftarToko');
 
 Route::get('/', function () {
     $id_userr = Auth::id();
@@ -95,7 +127,10 @@ Route::get('/logout', [
 ])->name('logout');
 
 
+
 Route::controller(pesananUserControllerAlamat::class)->group(function () {
+    // resources\views\pembeli\daftarPesanan.blade.php
+    Route::get('pembeli/daftarPesanan/getdata', 'getDaftarPesanan')->name('pembeli.getDaftarPesanan');
     Route::get('Useralamat/alamat/tambah', 'getPesananAlamat')->name('pembeli.getalamatkuyyyy');
     Route::post('Useralamat/tambah/action', 'pushPesananAlamat')->name('pembeli.pushpesanankuyyyyy');
     Route::get('Useralamat/alamat/getdata', 'getDataPesananKuyyy')->name('pembeli.getDataPesananKuyyy');

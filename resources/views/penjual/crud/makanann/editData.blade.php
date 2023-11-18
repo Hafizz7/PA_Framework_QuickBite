@@ -31,6 +31,11 @@
           </div>
 
           <div class="mb-5 w-full">
+            <label for="deskripsi" class="block mb-2 font-bold text-gray-600">Deskripsi</label>
+            <input type="text" name="deskripsi" placeholder="Deskripsi..." value="{{$makanans->deskripsi}}" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
+
+          <div class="mb-5 w-full">
             <label for="Gambar" class="block mb-2 font-bold text-gray-600">Gambar</label>
             <input type="file" name="gambar" placeholder="Gambar...." required value="{{$makanans->gambar}}" class="border border-gray-300 shadow p-3 w-full rounded mb-">
           </div>
@@ -48,7 +53,7 @@
             </select>
           </div>
 
-          <button class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
+          <button class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg" onclick="return confirm('Apakah Anda yakin ingin melakukan perubahan pada data ini?');">Submit</button>
         </form>
       </div>
     </div>

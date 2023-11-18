@@ -20,27 +20,20 @@ class AlamatUserController extends Controller
             'alamatsss' => $alaamat,
         ]);
     }
+
+
     public function pushAlamat(Request $request)
     {
         $user = Auth::id();
          //take digunakan untnuk membatasi perulangn
         $request->validate([
-            // 'pilih_alamat' => 'required',
+            'alamat' => 'required',
             'id_user' => 'required',
         ]);
-        if($request->filled('alamat_baru_lagiii')){
-            $alamat = $request->alamat_baru_lagiii;
-            // return dd($alamat);
-        }
-        else{
-            $alamat = ($request->pilih_alamat == 'alamatbaharuuu') ? $request->alamat_baru : $request->pilih_alamat;
-        }
-
         AlamatUser::create([
-            'alamat' => $alamat,
-            'id_user' => $request->id_user,
+            'alamat' => $request->alamat,
+            'id_user' => $user,
         ]);
-
-        return redirect()->back()->with('success', 'Data Alamat berhasil ditambahkan');
+        return redirect(route('pembeli.getalamatkuyyyy'));
     }
 }
