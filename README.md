@@ -75,8 +75,9 @@ QuickBite adalah platform pesanan makanan online yang memudahkan pembeli untuk m
 
 1. Clone repositori [ini](https://github.com/Hafizz7/PA_Framework_QuickBite.git).
 2. Copy (`.env.example`) menjadi (`.env`) lalu lakukan konfigurasi file (`.env`) dengan mengatur database dan base_envnya.
-3. Instal dependensi dengan menjalankan `composer install` dan `npm install`.
-4. Migrate database dengan perintah `php artisan migrate`.
-5. Jalankan server lokal dengan perintah `npm run dev`, `php artisan serve` dan juga `php artisan serve --port=8001` untuk API-nya.
+3. Buat key baru pada env dengan perintah `php artisan key:generate`
+4. Instal dependensi dengan menjalankan `composer install` dan `npm install`.
+5. Migrate database dengan perintah `php artisan migrate`.
+6. Jalankan server lokal dengan perintah `npm run dev`, `php artisan serve` dan juga `php artisan serve --port=8001` untuk API-nya.
 
 Terima kasih telah menggunakan QuickBite!
