@@ -67,7 +67,7 @@ Dashboard - Toko
                                         </a>
                                         <form action="{{route('penjual.deletetoko', $tkh['id'])}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             @csrf
-                                            <button class="px-4 py-2 bg-red-600 rounded-md text text-white">Hapus</button>
+                                            <button class="px-4 py-2 bg-red-600 rounded-md text text-white" >Hapus</button>
                                         </form>
                                     </div>
                                 </td>

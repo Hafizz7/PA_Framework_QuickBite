@@ -44,7 +44,7 @@
             </select>
           </div> --}}
 
-          <button class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
+          <button class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg" onclick="return confirm('Apakah Anda yakin ingin melakukan penambahan data?');">Submit</button>
         </form>
       </div>
     </div>
