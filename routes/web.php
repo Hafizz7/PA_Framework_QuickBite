@@ -64,6 +64,10 @@ Route::get('/logout', [
     AuthController::class, 'logout'
 ])->name('logout');
 
+// Ubah Profil
+Route::get('/profile/edit', [AuthController::class, 'edit'])->name('profile.edit')->middleware('auth');
+Route::post('/profile/update', [AuthController::class, 'update'])->name('profile.update')->middleware('auth');
+
 Route::controller(PesananController::class)->group(function () {
     Route::get('pesanan/tambah', 'addPesanan')->name('pembeli.addPesanan');
     Route::get('penjual/pesanan/tambah', 'getDataPesanan')->name('pembeli.getDataPesanan');
