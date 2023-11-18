@@ -1,23 +1,25 @@
 <?php
 
-use App\Http\Controllers\AlamatUserController;
-use App\Http\Controllers\ApiController2;
 use App\Models\Menu;
 use App\Models\Toko;
 use App\Models\Makanan;
 use App\Models\Penjual;
 use App\Models\keranjang;
+use App\Models\AlamatUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\ApiController2;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\MakananController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\AlamatUserController;
 use App\Http\Controllers\daftarmenuController;
+use App\Http\Controllers\pesananUserControllerAlamat;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,28 @@ use App\Http\Controllers\daftarmenuController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//coba
+// resources\views\pembeli\pesananUser.blade.php
+
+
+
+// $id_userr = Auth::id();
+// $alaamat = AlamatUser::where('id_user', $id_userr)->get();
+
+// Route::get('/pembeli/pesananUser', function () {
+//     $id_userr = Auth::id();
+//     $alaamat = AlamatUser::where('id_user', $id_userr)->get();
+
+//     return view('pembeli.pesananUser', [
+//         'alamatss' => $alaamat,
+
+//     ]);
+// })->name('pesanan_user_get_alamat');
+
+
+
+
+
 Route::get('/', function () {
     $id_userr = Auth::id();
     // return $id_userr;
@@ -71,12 +95,18 @@ Route::get('/logout', [
 ])->name('logout');
 
 
+Route::controller(pesananUserControllerAlamat::class)->group(function () {
+    Route::get('Useralamat/alamat/tambah', 'getPesananAlamat')->name('pembeli.getalamatkuyyyy');
+    Route::post('Useralamat/tambah/action', 'pushPesananAlamat')->name('pembeli.pushpesanankuyyyyy');
+});
+
+
 // Ubah Profil
 Route::get('/profile/edit', [AuthController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::post('/profile/update', [AuthController::class, 'update'])->name('profile.update')->middleware('auth');
 
 Route::controller(AlamatUserController::class)->group(function () {
-    Route::get('alamat/tambah', 'getALamat')->name('pembeli.getALamat');
+    Route::get('alamat/alamat/tambah', 'getALamat')->name('pembeli.getALamat');
     Route::post('alamat/tambah/action', 'pushAlamat')->name('pembeli.pushAlamat');
 });
 
