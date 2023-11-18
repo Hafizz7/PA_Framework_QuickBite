@@ -6,7 +6,7 @@
         <ul class="flex flex-row gap-14 justify-center underline-offset-2">
             <li class="hover:underline hover:text-[#84B74E]"><a href="/#">Home</a></li>
             <li class="hover:underline hover:text-[#84B74E]"><a href="/#toko">Toko</a></li>
-            <li class="hover:underline hover:text-[#84B74E]"><a href="/#">About</a></li>
+            <li class="hover:underline hover:text-[#84B74E]"><a href="/#about">About</a></li>
         </ul>
     </div>
     <div class="w-1/5 flex text-center justify-center">
