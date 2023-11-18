@@ -6,7 +6,7 @@
 
     <body>
         @include('components.navbar')
-        {{-- hero --}}        
+        {{-- hero --}}
         <section id="toko" class="h-auto bg-gray-100 flex items-start overflow-x-auto">
 
             <div class="container mx-auto py-4 px-14 text-white">

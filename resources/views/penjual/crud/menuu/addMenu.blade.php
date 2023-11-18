@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<div class="bg-blue-200 min-h-screen flex items-center">
+<div class="bg-[#E2FFC3] min-h-screen flex items-center">
     <div class="w-full">
 
       <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">

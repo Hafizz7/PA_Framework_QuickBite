@@ -1,16 +1,15 @@
 @extends('layouts.global')
 @section('title')
-    Tambah Data Makanan
+    Ubah Menu
 @endsection
 
 @section('content')
-<div class="bg-blue-200 min-h-screen flex items-center">
+<div class="bg-[#E2FFC3] min-h-screen flex items-center">
     <div class="w-full">
-      <h2 class="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Tambah Makanan</h2>
       <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
         <form action="{{route('penjual.updateMenu', $menus->id)}}" method="post" class="w-full flex flex-col items-start">
             @csrf
-            <p class="text-black text-[25px] font-bold font-['Kantumruy'] mx-auto">Tambah Data Barang</p>
+            <p class="text-black text-[25px] font-bold mx-auto">Ubah Menu</p>
              @if ($errors->any())
                 <div class="bg-red-500 text-white p-2 rounded-md">
                     <ul>
