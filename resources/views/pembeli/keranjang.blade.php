@@ -92,10 +92,15 @@
             <h1>Total</h1>
             <h1 class="ml-auto text-2xl" id="grandTotalAmount">{{ $grandTotal }}</h1>
         </div>
-        <a href="{{ route('pembeli.addPesanan') }}">
+        <a href="{{route('pembeli.getALamat')}}">
             <div class="bg-orange-600 w-full h-[55%] flex items-center justify-center">
                 <h1>Tambahkan Ke Pesanan</h1>
             </div>
         </a>
+        {{-- <button id="getAlamatpage" class="w-full h-[75%] flex items-center justify-center">
+            <div class="bg-orange-600 w-full h-[55%] flex items-center justify-center">
+                <h1>Tambahkan Ke Pesanan</h1>
+            </div>
+        </button> --}}
     </div>
 </div>

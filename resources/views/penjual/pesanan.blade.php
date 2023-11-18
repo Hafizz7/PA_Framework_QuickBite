@@ -47,7 +47,7 @@ Dashboard - Pesanan
                                         {{$pesanan->harga}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$pesanan->deskripsi}}
+                                        {{$pesanan->alamat}}
                                     </td>
                                     <td class="px-6 py-4">
                                         <form action="{{route('penjual.updateStatus', $pesanan->id)}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin Update data ini?');">
