@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Toko;
 use App\Models\Makanan;
 use App\Models\pesanan;
@@ -76,6 +77,7 @@ class pesananUserControllerAlamat extends Controller
 
         if (!$toko) {
             return view('penjual.pesanan', ['keranjangg' => collect(), 'tokosss' => []]);
+            return view('pembeli.daftarPesanan', ['keranjangg' => collect(), 'tokosss' => []]);
         }
 
         $id_toko = $toko->id;
@@ -85,22 +87,25 @@ class pesananUserControllerAlamat extends Controller
         return view('penjual.pesanan', [
             'keranjangg' => $keranjang,
         ]);
+        return view('pembeli.daftarPesanan', [
+            'keranjangg' => $keranjang,
+        ]);
     }
-    // public function updateStatus(Request $request, pesanan $pesanan){
-    //     $request->validate([
-    //         'status' => 'required',
-    //     ]);
+    public function getDaftarPesanan()
+    {
 
-    //     $pesanan->update([
-    //         'status' => $request->input('status'),
-    //     ]);
+        $id_user = Auth::id();
 
-    //     return redirect()->back()->with('success', 'Role user berhasil diubah');
-    // }
-
-
+        $keranjang = pesanan::where('id_user', $id_user)->get();
+        return view('pembeli.daftarPesanan', [
+            'keranjangss' => $keranjang,
+        ]);
+    }
     public function updateStatusKuyyyy(Request $request, $id)
     {
+
+
+
 
         $request->validate([
             'status' => 'required|string|max:30',

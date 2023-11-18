@@ -1,4 +1,4 @@
-@extends('layouts.global')
+{{-- @extends('layouts.global')
 @section('title')
     Edit Pesanan
 @endsection
@@ -52,4 +52,4 @@
         </div>
     </div>
 </div>
-
+ --}}
