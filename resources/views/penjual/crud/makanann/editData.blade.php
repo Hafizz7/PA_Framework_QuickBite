@@ -39,7 +39,10 @@
             <label for="Gambar" class="block mb-2 font-bold text-gray-600">Gambar</label>
             <input type="file" name="gambar" placeholder="Gambar...." required value="{{$makanans->gambar}}" class="border border-gray-300 shadow p-3 w-full rounded mb-">
           </div>
-
+          <div class="mb-5 w-full">
+            <label for="deskripsi" class="block mb-2 font-bold text-gray-600">Deskripsi</label>
+            <input type="text" name="deskripsi" placeholder="Deskripsi..." required value="{{$makanans->deskripsi}}" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+          </div>
           <div class="mb-5 w-full">
             <label for="JenisProduk" class="block mb-2 font-bold text-gray-600">Nama Menu</label>
             <select type="file" name="id_menu" placeholder="Gambar...." required class="border border-gray-300 shadow p-3 w-full rounded mb-">
