@@ -2,17 +2,8 @@
     <aside class="fixed bg-[#3d68ff] h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
             <a href="" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
-            <button
-                class="w-full bg-white color-[#1947ee] font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
-            <a href=""
-                class="flex items-center text-white hover:opacity-100 py-4 pl-6 hover:bg-[#1947ee]">
-                <i class="fas fa-tachometer-alt mr-3"></i>
-                DashboardT
-            </a>
             <a href="{{route('penjual.TokoTertentu')}}"
                 class="flex items-center text-white hover:opacity-100 py-4 pl-6 hover:bg-[#1947ee]">
                 <i class="fas fa-sticky-note mr-3"></i>
@@ -28,7 +19,7 @@
                 <i class="fas fa-table mr-3"></i>
                 Makanan
             </a>
-            <a href="{{route('pembeli.getDataPesanan')}}" class="flex items-center text-white py-4 pl-6 hover:bg-[#1947ee]">
+            <a href="{{route('pembeli.getDataPesananKuyyy')}}" class="flex items-center text-white py-4 pl-6 hover:bg-[#1947ee]">
                 <i class="fas fa-align-left mr-3"></i>
                 Pesanan
             </a>

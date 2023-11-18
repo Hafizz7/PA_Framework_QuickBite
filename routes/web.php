@@ -98,7 +98,10 @@ Route::get('/logout', [
 Route::controller(pesananUserControllerAlamat::class)->group(function () {
     Route::get('Useralamat/alamat/tambah', 'getPesananAlamat')->name('pembeli.getalamatkuyyyy');
     Route::post('Useralamat/tambah/action', 'pushPesananAlamat')->name('pembeli.pushpesanankuyyyyy');
+    Route::get('Useralamat/alamat/getdata', 'getDataPesananKuyyy')->name('pembeli.getDataPesananKuyyy');
+    Route::post('Useralamat/alamat/edit{id}/actioon', 'updateStatusKuyyyy')->name('penjual.updateStatusKuyyyy');
 });
+
 
 
 // Ubah Profil
@@ -108,14 +111,16 @@ Route::post('/profile/update', [AuthController::class, 'update'])->name('profile
 Route::controller(AlamatUserController::class)->group(function () {
     Route::get('alamat/alamat/tambah', 'getALamat')->name('pembeli.getALamat');
     Route::post('alamat/tambah/action', 'pushAlamat')->name('pembeli.pushAlamat');
+
 });
 
 
-Route::controller(PesananController::class)->group(function () {
-    Route::get('pesanan/tambah', 'addPesanan')->name('pembeli.addPesanan');
-    Route::get('penjual/pesanan/tambah', 'getDataPesanan')->name('pembeli.getDataPesanan');
-    Route::post('penjual/pesanan/edit/{id}/action', 'updateStatus')->name('penjual.updateStatus');
-});
+// Route::controller(PesananController::class)->group(function () {
+//     Route::get('pesanan/tambah', 'addPesanan')->name('pembeli.addPesanan');
+//     // Route::get('penjual/pesanan/tambah', 'getDataPesanan')->name('pembeli.getDataPesanan');
+//     Route::post('penjual/pesanan/edit/{id}/action', 'updateStatus')->name('penjual.updateStatus');
+// });
+
 Route::controller(KeranjangController::class)->group(function () {
     Route::get('keranjang/tambah/{id}', 'addKeranjangg')->name('pembeli.addKeranjangg');
     Route::get('keranjang/getData/{id}', 'getMakanan')->name('getMakanan');

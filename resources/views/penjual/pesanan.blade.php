@@ -50,7 +50,7 @@ Dashboard - Pesanan
                                         {{$pesanan->alamat}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <form action="{{route('penjual.updateStatus', $pesanan->id)}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin Update data ini?');">
+                                        <form action="{{route('penjual.updateStatusKuyyyy', $pesanan->id)}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin Update data ini?');">
                                         <select name="status" class="mb-5 border border-gray-300 shadow p-3 w-full rounded mb-">
                                             <option value="Dipesan" {{ $pesanan->status == 'Dipesan' ? 'selected' : '' }}>Dipesan</option>
                                             <option value="Dalam Proses" {{ $pesanan->status == 'Dalam Proses' ? 'selected' : '' }}>Dalam Proses</option>

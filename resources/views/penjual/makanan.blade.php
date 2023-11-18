@@ -61,8 +61,10 @@ Dashboard - Makanan
                                     <td class="px-6 py-4">
                                         {{$makanans->deskripsi}}
                                     </td>
+
                                     <td class="px-6 py-4">
-                                        {{$makanans->gambar}}
+                                        <img src="{{ asset('images/makanan/' . $makanans->gambar) }}" class=" h-16">
+                                        {{-- {{$makanans->gambar}} --}}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="w-full h-auto flex flex-row">

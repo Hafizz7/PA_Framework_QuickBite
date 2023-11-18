@@ -66,7 +66,7 @@ class AuthController extends Controller
             if ($user->role === 'penjual') {
                 $userId = Auth::id();
                 session(['user_id' => $userId]);
-                return redirect(route('penjual.dashboard'));
+                return redirect(route('penjual.TokoTertentu'));
             } else {
                 $userId = Auth::id();
                 session(['user_id' => $userId]);

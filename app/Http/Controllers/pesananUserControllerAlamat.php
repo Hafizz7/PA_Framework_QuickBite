@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Toko;
 use App\Models\Makanan;
 use App\Models\pesanan;
 use App\Models\keranjang;
@@ -35,7 +36,7 @@ class pesananUserControllerAlamat extends Controller
         $user = Auth::id();
         $keranjang = keranjang::where('id_user', $user)->get();
         $totalKeranjang = keranjang::where('id_user', $user)->count();
-        $status = 'dalamAntrian';
+        $status = 'Dipesan';
 
          //take digunakan untnuk membatasi perulangn
 
@@ -67,5 +68,49 @@ class pesananUserControllerAlamat extends Controller
         }
 
         return redirect()->back()->with('success', 'Data Alamat berhasil ditambahkan');
+    }
+    public function getDataPesananKuyyy()
+    {
+        $id_user = Auth::id();
+        $toko = Toko::where('id_user', $id_user)->first();
+
+        if (!$toko) {
+            return view('penjual.pesanan', ['keranjangg' => collect(), 'tokosss' => []]);
+        }
+
+        $id_toko = $toko->id;
+
+        $keranjang = pesanan::where('id_toko', $id_toko)->get();
+        // return $keranjang;
+        return view('penjual.pesanan', [
+            'keranjangg' => $keranjang,
+        ]);
+    }
+    // public function updateStatus(Request $request, pesanan $pesanan){
+    //     $request->validate([
+    //         'status' => 'required',
+    //     ]);
+
+    //     $pesanan->update([
+    //         'status' => $request->input('status'),
+    //     ]);
+
+    //     return redirect()->back()->with('success', 'Role user berhasil diubah');
+    // }
+
+
+    public function updateStatusKuyyyy(Request $request, $id)
+    {
+
+        $request->validate([
+            'status' => 'required|string|max:30',
+        ]);
+        $pesanans = pesanan::findOrFail($id);
+
+        $pesanans->update([
+            'status' => $request->status,
+        ]);
+        // $makanas->delete();
+        return redirect()->back()->with('success', 'Status pesanan berhasil diubah');
     }
 }
