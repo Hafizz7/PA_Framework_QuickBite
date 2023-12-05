@@ -80,7 +80,7 @@
                             <div class="mt-4">
                                 <a href="{{ route('pembeli.addKeranjangg', $mkn->id) }}"
                                     class="bg-[#84B74E] hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded">
-                                    Tambah ke Keranjang
+                                    Tambah ke Keranjang Edit Coba
                                 </a>
                             </div>
                         </div>
